@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhvwas10nxtyt"]
+[gd_scene load_steps=8 format=3 uid="uid://dhvwas10nxtyt"]
 
 [ext_resource type="Script" path="res://scene/world/player_back_interface.gd" id="1_arqyo"]
 [ext_resource type="PackedScene" uid="uid://bw1gfo3lu10ho" path="res://scene/ui/slot.tscn" id="2_1ka24"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_kf1tx"]
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_djfhs"]
+font_size = 24
 
 [sub_resource type="Resource" id="Resource_t2qji"]
 script = ExtResource("3_iex6h")
@@ -89,61 +92,118 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 8
+[node name="Timer" type="Timer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
+wait_time = 0.1
 
-[node name="CraftInterface" type="GridContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="CraftInterface" type="GridContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
 columns = 3
 script = ExtResource("2_ska4r")
 
-[node name="SlotPanelContainer0" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+[node name="SlotPanelContainer0" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SlotPanelContainer1" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+[node name="SlotPanelContainer1" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SlotPanelContainer2" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+[node name="SlotPanelContainer2" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SlotPanelContainer3" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+[node name="SlotPanelContainer3" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SlotPanelContainer4" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+[node name="SlotPanelContainer4" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SlotPanelContainer5" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+[node name="SlotPanelContainer5" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SlotPanelContainer6" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+[node name="SlotPanelContainer6" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SlotPanelContainer7" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+[node name="SlotPanelContainer7" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SlotPanelContainer8" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+[node name="SlotPanelContainer8" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SlotPanelContainer9" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer" instance=ExtResource("2_1ka24")]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "最小数量"
+
+[node name="SpinBox" type="SpinBox" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "最大数量"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "物品名称"
+label_settings = SubResource("LabelSettings_djfhs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotPanelContainer9" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer2" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "制作
+物品"
+
+[node name="SlotPanelContainer2" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer2" instance=ExtResource("2_1ka24")]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer"]
+custom_minimum_size = Vector2(30, 300)
+layout_mode = 2
+value = 50.0
+fill_mode = 2
+show_percentage = false
 
 [node name="OtherBackpackPanel" type="PanelContainer" parent="UI/UIHboxContainer"]
 visible = false
@@ -157,3 +217,5 @@ unique_name_in_owner = true
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 slot = SubResource("Resource_t2qji")
+
+[connection signal="timeout" from="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/Timer" to="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/HBoxContainer/VBoxContainer/CraftInterface" method="_on_timer_timeout"]

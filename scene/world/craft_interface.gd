@@ -19,6 +19,7 @@ class_name CraftInterface extends GridContainer
 #region 变量
 var current_craft_table : Dictionary
 @onready var slot_panel_container_9: SlotPanelContainer = %SlotPanelContainer9
+@onready var timer: Timer = $"../../Timer"
 #endregion
 
 # TODO 合成台UI ===============>虚方法<===============
@@ -31,10 +32,12 @@ func _ready() -> void:
 		i.slot_clicked.connect(Global._on_slot_clicked)
 		i.slot_clicked.connect(_on_slot_clicked)
 
+	slot_panel_container_9.slot_clicked.connect(_on_take_slot)
 	slot_panel_container_9.slot_clicked.connect(Global._on_slot_clicked)
 
 	Global.craft_table = Global.THREE.craft_table_dic
 	Global.item_table = Global.THREE.item_table_dic
+
 
 func _process(_delta: float) -> void:
 	pass
@@ -51,7 +54,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 # TODO 合成台UI ===============>信号链接方法<===============
 #region 信号链接方法
-func _on_slot_clicked(_slot_index : int, _mouse_button : int, _backpack : Node) -> void:
+func _on_slot_clicked(_slot_index : int, mouse_button : int, _backpack : Node) -> void:
 	var index : Array[int]
 	var craft : Array[String]
 	var number : int = 0
@@ -70,13 +73,25 @@ func _on_slot_clicked(_slot_index : int, _mouse_button : int, _backpack : Node) 
 	if Global.craft_table.find_key(current_craft_table):
 		var item_name : String = Global.craft_table.find_key(current_craft_table)
 		var item_path : String = Global.item_table[item_name]
-		var item : BaseItem = load(item_path)
-		var slot : BaseSlot = BaseSlot.new()
-		slot.count = 1
-		slot.item = item
-		slot_panel_container_9.slot = slot
-		print("合成")
 
+		var item : BaseItem = load(item_path)
+		if slot_panel_container_9.slot.count >= 1:
+			slot_panel_container_9.slot.count += 1
+			slot_panel_container_9.set_slot_panel(slot_panel_container_9.slot)
+		else :
+			var slot : BaseSlot = BaseSlot.new()
+			slot.count = 1
+			slot.item = item
+			slot_panel_container_9.slot = slot
+
+
+func _on_take_slot(_slot_index : int, mouse_button : int, _backpack : Node) -> void:
+	if mouse_button == 0:
+		if slot_panel_container_9.slot.has_item():
+			for i : SlotPanelContainer in get_children():
+				if i.slot.count > 0:
+					i.slot.count -= 1
+					i.set_slot_panel(i.slot)
 #endregion
 
 # TODO 合成台UI ===============>工具方法<===============
