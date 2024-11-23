@@ -32,15 +32,52 @@ const SLOT = preload("res://scene/ui/slot.tscn")
 # TODO 全局属性 ===============>变 量<===============
 #region 变量
 var player_backpack = preload("res://resource/player_backpack.tres")
-
+var dragged_slot_panel_container: SlotPanelContainer
 #endregion
 
 # TODO 全局属性 ===============>信号链接方法<===============
 #region 信号链接方法
+func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> void:
+	var click_slot : BaseSlot = backpack.get_child(slot_index).slot
+	var dragged_slot : BaseSlot = dragged_slot_panel_container.slot
 
+	if mouse_button == 0:
+		if dragged_slot.has_item() and dragged_slot.can_stack(click_slot):
+			click_slot = dragged_slot.stack_item(click_slot)
+
+			update_slot(dragged_slot, click_slot, slot_index, backpack)
+			return
+
+	if mouse_button == 1:
+		if not dragged_slot.has_item():
+			if not click_slot.has_item(): return
+
+			if click_slot.count > 1:
+				dragged_slot = click_slot.half_slot(dragged_slot)
+
+				update_slot(dragged_slot, click_slot, slot_index, backpack)
+				return
+
+		if dragged_slot.count >= 1:
+			if not click_slot.has_item():
+				click_slot = dragged_slot.add_one_item(click_slot)
+
+			if click_slot.can_stack(dragged_slot):
+				click_slot = dragged_slot.stack_one_item(click_slot)
+
+				update_slot(dragged_slot, click_slot, slot_index, backpack)
+				return
+
+	var temp_slot : BaseSlot = dragged_slot
+	dragged_slot = click_slot
+	click_slot = temp_slot
+
+	update_slot(dragged_slot, click_slot, slot_index, backpack)
 #endregion
 
 # TODO 全局属性 ===============>工具方法<===============
 #region 工具方法
-
+func update_slot(dragged_slot : BaseSlot, click_slot : BaseSlot, slot_index : int, backpack : Node) -> void:
+	dragged_slot_panel_container.slot = dragged_slot
+	backpack.get_child(slot_index).slot = click_slot
 #endregion

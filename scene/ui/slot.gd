@@ -7,7 +7,7 @@ class_name SlotPanelContainer extends PanelContainer
 
 # TODO 格子UI ===============>信 号<===============
 #region 信号
-signal slot_clicked(slot_index : int, mouse_index : int)
+signal slot_clicked(slot_index : int, mouse_index : int, slot_parent : Node)
 #endregion
 
 # TODO 格子UI ===============>常 量<===============
@@ -51,9 +51,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("mouse_left"):
-			slot_clicked.emit(get_index(), 0)
+			slot_clicked.emit(get_index(), 0, get_parent())
 		elif event.is_action_pressed("mouse_right"):
-			slot_clicked.emit(get_index(), 1)
+			slot_clicked.emit(get_index(), 1, get_parent())
 #endregion
 
 # TODO 格子UI ===============>信号链接方法<===============

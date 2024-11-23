@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhvwas10nxtyt"]
+[gd_scene load_steps=7 format=3 uid="uid://dhvwas10nxtyt"]
 
 [ext_resource type="Script" path="res://scene/world/player_back_interface.gd" id="1_arqyo"]
 [ext_resource type="PackedScene" uid="uid://bw1gfo3lu10ho" path="res://scene/ui/slot.tscn" id="2_1ka24"]
+[ext_resource type="Script" path="res://scene/world/craft_interface.gd" id="2_ska4r"]
 [ext_resource type="Script" path="res://script/base_slot.gd" id="3_iex6h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kf1tx"]
@@ -65,11 +66,84 @@ columns = 10
 script = ExtResource("1_arqyo")
 
 [node name="CraftPanel" type="PanelContainer" parent="UI/UIHboxContainer"]
-visible = false
 custom_minimum_size = Vector2(700, 500)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/UIHboxContainer/CraftPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="CraftTitle" type="Label" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "合成台"
+label_settings = SubResource("LabelSettings_kf1tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CraftBG" type="PanelContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="CraftInterface" type="GridContainer" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+script = ExtResource("2_ska4r")
+
+[node name="SlotPanelContainer0" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotPanelContainer1" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotPanelContainer2" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotPanelContainer3" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotPanelContainer4" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotPanelContainer5" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotPanelContainer6" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotPanelContainer7" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotPanelContainer8" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer/CraftInterface" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotPanelContainer9" parent="UI/UIHboxContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/VBoxContainer" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="OtherBackpackPanel" type="PanelContainer" parent="UI/UIHboxContainer"]
 visible = false

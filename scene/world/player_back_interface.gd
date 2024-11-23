@@ -32,9 +32,11 @@ func _ready() -> void:
 	for i in Global.player_backpack.slots:
 		var slot : SlotPanelContainer = Global.SLOT.instantiate()
 		add_child(slot)
-		slot.slot_clicked.connect(_on_slot_clicked)
+		slot.slot_clicked.connect(Global._on_slot_clicked)
 		if i:
 			slot.slot = i
+
+	Global.dragged_slot_panel_container = dragged_slot_panel_container
 
 func _process(_delta: float) -> void:
 	if dragged_slot_panel_container.visible:
@@ -52,55 +54,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 # TODO 玩家背包UI ===============>信号链接方法<===============
 #region 信号链接方法
-func _on_slot_clicked(slot_index : int, mouse_button : int) -> void:
-	var click_slot : BaseSlot = get_child(slot_index).slot
-	var dragged_slot : BaseSlot = dragged_slot_panel_container.slot
-
-	if mouse_button == 0:
-		if dragged_slot.has_item():
-			if dragged_slot.item == click_slot.item and click_slot.item.can_stack:
-				dragged_slot.item = null
-				click_slot.count += dragged_slot.count
-				dragged_slot.count = 0
-			else :
-				var temp_slot : BaseSlot = dragged_slot
-				dragged_slot = click_slot
-				click_slot = temp_slot
-
-		else :
-			var temp_slot : BaseSlot = dragged_slot
-			dragged_slot = click_slot
-			click_slot = temp_slot
-	if mouse_button == 1:
-		if dragged_slot.has_item():
-			if dragged_slot.count == 1:
-				var temp_slot : BaseSlot = dragged_slot
-				dragged_slot = click_slot
-				click_slot = temp_slot
-			elif dragged_slot.count > 1 :
-				if click_slot.has_item() and click_slot.item == dragged_slot.item and click_slot.item.can_stack:
-					dragged_slot.count -= 1
-					click_slot.count += 1
-				elif click_slot.has_item() and click_slot.item != dragged_slot.item:
-					var temp_slot : BaseSlot = dragged_slot
-					dragged_slot = click_slot
-					click_slot = temp_slot
-				else :
-					dragged_slot.count -= 1
-					click_slot = dragged_slot.duplicate()
-					click_slot.count = 1
-		else :
-			if click_slot.has_item() and click_slot.count > 1:
-				if click_slot.count % 2 == 0:
-					click_slot.count /= 2
-					dragged_slot = click_slot.duplicate()
-				else :
-					click_slot.count /= 2
-					dragged_slot = click_slot.duplicate()
-					dragged_slot.count += 1
-
-	dragged_slot_panel_container.slot = dragged_slot
-	get_child(slot_index).slot = click_slot
 
 #endregion
 
