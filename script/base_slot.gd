@@ -18,7 +18,7 @@ const MAX_COUNT : int = 64
 # TODO 格子基类 ===============>变 量<===============
 #region 变量
 @export var item : BaseItem
-@export var count : int
+@export var count : int = 1
 #endregion
 
 # TODO 格子基类 ===============>信号链接方法<===============
@@ -28,5 +28,6 @@ const MAX_COUNT : int = 64
 
 # TODO 格子基类 ===============>工具方法<===============
 #region 工具方法
-
+func has_item() -> bool:
+	return item != null
 #endregion

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://ca3105jwh40yq"]
+
+[ext_resource type="Texture2D" uid="uid://n0d4e26ll0ty" path="res://asset/item.png" id="1_5ptt8"]
+[ext_resource type="Script" path="res://script/base_item.gd" id="1_hsqh3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pax3i"]
+atlas = ExtResource("1_5ptt8")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_hsqh3")
+item_name = "线"
+item_desc = "线"
+can_stack = true
+item_texture = SubResource("AtlasTexture_pax3i")

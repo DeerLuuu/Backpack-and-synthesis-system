@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="BaseBackpack" load_steps=21 format=3 uid="uid://btqfw2xv1i1gk"]
+
+[ext_resource type="Script" path="res://script/base_backpack.gd" id="1_7lv7w"]
+[ext_resource type="Script" path="res://script/base_slot.gd" id="2_vmrof"]
+[ext_resource type="Resource" uid="uid://cf1r0spgccm3e" path="res://resource/items/board.tres" id="3_48r14"]
+[ext_resource type="Resource" uid="uid://bdidwummwqp7a" path="res://resource/items/board_archer.tres" id="4_4y5of"]
+[ext_resource type="Resource" uid="uid://yd0hb1rp4qc4" path="res://resource/items/iron.tres" id="5_2ua25"]
+[ext_resource type="Resource" uid="uid://baua7yuolsxme" path="res://resource/items/iron_arrow.tres" id="6_w1kto"]
+[ext_resource type="Resource" uid="uid://ca3105jwh40yq" path="res://resource/items/line.tres" id="7_unpai"]
+[ext_resource type="Resource" uid="uid://jels51vd4ukd" path="res://resource/items/long_board_stick.tres" id="8_wo5i5"]
+[ext_resource type="Resource" uid="uid://qoubxywu2meg" path="res://resource/items/short_board_stick.tres" id="9_0tamk"]
+[ext_resource type="Resource" uid="uid://duxnur52s33nw" path="res://resource/items/wood.tres" id="10_4cuop"]
+
+[sub_resource type="Resource" id="Resource_shbps"]
+script = ExtResource("2_vmrof")
+item = ExtResource("3_48r14")
+count = 64
+
+[sub_resource type="Resource" id="Resource_6wah3"]
+script = ExtResource("2_vmrof")
+item = ExtResource("4_4y5of")
+count = 1
+
+[sub_resource type="Resource" id="Resource_of248"]
+script = ExtResource("2_vmrof")
+item = ExtResource("5_2ua25")
+count = 43
+
+[sub_resource type="Resource" id="Resource_6a648"]
+script = ExtResource("2_vmrof")
+item = ExtResource("6_w1kto")
+count = 34
+
+[sub_resource type="Resource" id="Resource_bjtki"]
+script = ExtResource("2_vmrof")
+item = ExtResource("7_unpai")
+count = 55
+
+[sub_resource type="Resource" id="Resource_1spf1"]
+script = ExtResource("2_vmrof")
+item = ExtResource("8_wo5i5")
+count = 6
+
+[sub_resource type="Resource" id="Resource_7n666"]
+script = ExtResource("2_vmrof")
+item = ExtResource("9_0tamk")
+count = 8
+
+[sub_resource type="Resource" id="Resource_s7nx1"]
+script = ExtResource("2_vmrof")
+item = ExtResource("10_4cuop")
+count = 16
+
+[sub_resource type="Resource" id="Resource_g1jgs"]
+script = ExtResource("2_vmrof")
+item = ExtResource("3_48r14")
+count = 24
+
+[sub_resource type="Resource" id="Resource_6p2j8"]
+script = ExtResource("2_vmrof")
+item = ExtResource("4_4y5of")
+count = 1
+
+[resource]
+script = ExtResource("1_7lv7w")
+backpack_name = "玩家背包"
+backpack_desc = "玩家的背包"
+slots = Array[ExtResource("2_vmrof")]([SubResource("Resource_shbps"), SubResource("Resource_6wah3"), SubResource("Resource_of248"), SubResource("Resource_6a648"), SubResource("Resource_bjtki"), SubResource("Resource_1spf1"), SubResource("Resource_7n666"), SubResource("Resource_s7nx1"), SubResource("Resource_g1jgs"), SubResource("Resource_6p2j8"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

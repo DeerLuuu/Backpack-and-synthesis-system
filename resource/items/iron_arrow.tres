@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=5 format=3 uid="uid://baua7yuolsxme"]
+
+[ext_resource type="Texture2D" uid="uid://n0d4e26ll0ty" path="res://asset/item.png" id="1_0sfia"]
+[ext_resource type="Script" path="res://script/base_item.gd" id="2_vce25"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx3if"]
+atlas = ExtResource("1_0sfia")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wex86"]
+atlas = SubResource("AtlasTexture_wx3if")
+
+[resource]
+script = ExtResource("2_vce25")
+item_name = "铁箭"
+item_desc = "使用铁箭头打造的箭矢"
+can_stack = true
+item_texture = SubResource("AtlasTexture_wex86")

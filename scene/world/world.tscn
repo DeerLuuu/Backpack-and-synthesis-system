@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhvwas10nxtyt"]
+
+[ext_resource type="Script" path="res://scene/world/player_back_interface.gd" id="1_arqyo"]
+[ext_resource type="PackedScene" uid="uid://bw1gfo3lu10ho" path="res://scene/ui/slot.tscn" id="2_1ka24"]
+[ext_resource type="Script" path="res://script/base_slot.gd" id="3_iex6h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kf1tx"]
+font_size = 32
+
+[sub_resource type="Resource" id="Resource_t2qji"]
+script = ExtResource("3_iex6h")
+count = 1
+
+[node name="World" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UIHboxContainer" type="GridContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+
+[node name="PlayerBackpackPanel" type="PanelContainer" parent="UI/UIHboxContainer"]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/UIHboxContainer/PlayerBackpackPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIHboxContainer/PlayerBackpackPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerBbackpackTitle" type="Label" parent="UI/UIHboxContainer/PlayerBackpackPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "背包"
+label_settings = SubResource("LabelSettings_kf1tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerBackBG" type="PanelContainer" parent="UI/UIHboxContainer/PlayerBackpackPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerBackInterface" type="GridContainer" parent="UI/UIHboxContainer/PlayerBackpackPanel/MarginContainer/VBoxContainer/PlayerBackBG"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 10
+script = ExtResource("1_arqyo")
+
+[node name="CraftPanel" type="PanelContainer" parent="UI/UIHboxContainer"]
+visible = false
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="OtherBackpackPanel" type="PanelContainer" parent="UI/UIHboxContainer"]
+visible = false
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="DraggedSlotPanelContainer" parent="UI" instance=ExtResource("2_1ka24")]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+slot = SubResource("Resource_t2qji")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://cf1r0spgccm3e"]
+
+[ext_resource type="Texture2D" uid="uid://n0d4e26ll0ty" path="res://asset/item.png" id="1_arbmy"]
+[ext_resource type="Script" path="res://script/base_item.gd" id="1_q75nf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4oba"]
+atlas = ExtResource("1_arbmy")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_q75nf")
+item_name = "木板"
+item_desc = "由木头切割而成的材料"
+can_stack = true
+item_texture = SubResource("AtlasTexture_w4oba")

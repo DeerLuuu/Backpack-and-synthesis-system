@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=2 format=3 uid="uid://ohtb3tp34q6j"]
+
+[ext_resource type="Script" path="res://script/base_item.gd" id="1_3a8y1"]
+
+[resource]
+script = ExtResource("1_3a8y1")
+item_name = "空物品"
+item_desc = "一个占位物品"
+can_stack = false

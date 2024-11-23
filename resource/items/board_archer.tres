@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://bdidwummwqp7a"]
+
+[ext_resource type="Texture2D" uid="uid://n0d4e26ll0ty" path="res://asset/item.png" id="1_xa4wd"]
+[ext_resource type="Script" path="res://script/base_item.gd" id="2_1d6mj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwo27"]
+atlas = ExtResource("1_xa4wd")
+region = Rect2(0, 32, 32, 32)
+
+[resource]
+script = ExtResource("2_1d6mj")
+item_name = "木弓"
+item_desc = "一把使用木头制作的弓"
+can_stack = false
+item_texture = SubResource("AtlasTexture_wwo27")
