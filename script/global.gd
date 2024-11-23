@@ -23,9 +23,13 @@ const NULL = preload("res://resource/items/null.tres")
 const SHORT_BOARD_STICK = preload("res://resource/items/short_board_stick.tres")
 const WOOD = preload("res://resource/items/wood.tres")
 # /// /// /// /// /// /// ///
-
+const THREE = preload("res://resource/craft_table/three.tres")
 # UI /// /// /// /// /// ///
 const SLOT = preload("res://scene/ui/slot.tscn")
+# /// /// /// /// /// /// ///
+
+# 配方 /// /// /// /// /// ///
+
 # /// /// /// /// /// /// ///
 #endregion
 
@@ -33,6 +37,8 @@ const SLOT = preload("res://scene/ui/slot.tscn")
 #region 变量
 var player_backpack = preload("res://resource/player_backpack.tres")
 var dragged_slot_panel_container: SlotPanelContainer
+var craft_table : Dictionary
+var item_table : Dictionary
 #endregion
 
 # TODO 全局属性 ===============>信号链接方法<===============
@@ -42,7 +48,7 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 	var dragged_slot : BaseSlot = dragged_slot_panel_container.slot
 
 	if mouse_button == 0:
-		if dragged_slot.has_item() and dragged_slot.can_stack(click_slot):
+		if dragged_slot.has_item() and dragged_slot.can_stack(click_slot) and not click_slot.is_full():
 			click_slot = dragged_slot.stack_item(click_slot)
 
 			update_slot(dragged_slot, click_slot, slot_index, backpack)
@@ -53,14 +59,17 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 			if not click_slot.has_item(): return
 
 			if click_slot.count > 1:
-				dragged_slot = click_slot.half_slot(dragged_slot)
+				dragged_slot = click_slot.half_slot()
 
 				update_slot(dragged_slot, click_slot, slot_index, backpack)
 				return
 
 		if dragged_slot.count >= 1:
 			if not click_slot.has_item():
-				click_slot = dragged_slot.add_one_item(click_slot)
+				click_slot = dragged_slot.add_one_item()
+
+				update_slot(dragged_slot, click_slot, slot_index, backpack)
+				return
 
 			if click_slot.can_stack(dragged_slot):
 				click_slot = dragged_slot.stack_one_item(click_slot)

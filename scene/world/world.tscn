@@ -10,7 +10,7 @@ font_size = 32
 
 [sub_resource type="Resource" id="Resource_t2qji"]
 script = ExtResource("3_iex6h")
-count = 1
+count = 0
 
 [node name="World" type="Node2D"]
 

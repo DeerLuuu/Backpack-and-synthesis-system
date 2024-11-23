@@ -17,7 +17,8 @@ class_name CraftInterface extends GridContainer
 
 # TODO 合成台UI ===============>变 量<===============
 #region 变量
-
+var current_craft_table : Dictionary
+@onready var slot_panel_container_9: SlotPanelContainer = %SlotPanelContainer9
 #endregion
 
 # TODO 合成台UI ===============>虚方法<===============
@@ -29,6 +30,11 @@ func _ready() -> void:
 	for i : SlotPanelContainer in get_children():
 		i.slot_clicked.connect(Global._on_slot_clicked)
 		i.slot_clicked.connect(_on_slot_clicked)
+
+	slot_panel_container_9.slot_clicked.connect(Global._on_slot_clicked)
+
+	Global.craft_table = Global.THREE.craft_table_dic
+	Global.item_table = Global.THREE.item_table_dic
 
 func _process(_delta: float) -> void:
 	pass
@@ -45,8 +51,32 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 # TODO 合成台UI ===============>信号链接方法<===============
 #region 信号链接方法
-func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> void:
-	print("合成表检测")
+func _on_slot_clicked(_slot_index : int, _mouse_button : int, _backpack : Node) -> void:
+	var index : Array[int]
+	var craft : Array[String]
+	var number : int = 0
+	for i : SlotPanelContainer in get_children():
+		if i.slot.item == null:
+			number += 1
+			continue
+		craft.append(i.slot.item.item_name)
+		if not craft.is_empty():
+			index.append(number)
+			number = 0
+	index.pop_front()
+	index.append(-1)
+	current_craft_table = {"位码" : index, "配方" : craft}
+
+	if Global.craft_table.find_key(current_craft_table):
+		var item_name : String = Global.craft_table.find_key(current_craft_table)
+		var item_path : String = Global.item_table[item_name]
+		var item : BaseItem = load(item_path)
+		var slot : BaseSlot = BaseSlot.new()
+		slot.count = 1
+		slot.item = item
+		slot_panel_container_9.slot = slot
+		print("合成")
+
 #endregion
 
 # TODO 合成台UI ===============>工具方法<===============

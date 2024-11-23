@@ -68,14 +68,14 @@ func reset_slot_panel() -> void:
 	count_label.hide()
 	count_label.text = ""
 
-func set_slot_panel(slot : BaseSlot) -> void:
-	if slot.item:
-		if slot.item.item_texture:
-			slot_texture.texture = slot.item.item_texture
+func set_slot_panel(_slot : BaseSlot) -> void:
+	if _slot.item:
+		if _slot.item.item_texture:
+			slot_texture.texture = _slot.item.item_texture
 
-	if slot.count > 1:
+	if _slot.count > 1:
 		count_label.show()
-		count_label.text = "%s" % slot.count
+		count_label.text = "%s" % _slot.count
 	else :
 		count_label.hide()
 		count_label.text = ""
