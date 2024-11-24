@@ -19,7 +19,11 @@ class_name CraftInterface extends GridContainer
 #region 变量
 var current_craft_table : Dictionary
 @onready var slot_panel_container_9: SlotPanelContainer = %SlotPanelContainer9
-@onready var timer: Timer = $"../../Timer"
+@onready var slot_panel_container_10: SlotPanelContainer = %SlotPanelContainer10
+@onready var craft_button: Button = %CraftButton
+@onready var craft_item_count_spin: SpinBox = %CraftItemCountSpin
+
+var craft_item_count : int = 0
 #endregion
 
 # TODO 合成台UI ===============>虚方法<===============
@@ -32,8 +36,9 @@ func _ready() -> void:
 		i.slot_clicked.connect(Global._on_slot_clicked)
 		i.slot_clicked.connect(_on_slot_clicked)
 
-	slot_panel_container_9.slot_clicked.connect(_on_take_slot)
 	slot_panel_container_9.slot_clicked.connect(Global._on_slot_clicked)
+	slot_panel_container_10.slot_clicked.connect(Global._on_slot_clicked)
+	slot_panel_container_10.slot_clicked.connect(_on_slot_clicked)
 
 	Global.craft_table = Global.THREE.craft_table_dic
 	Global.item_table = Global.THREE.item_table_dic
@@ -75,26 +80,49 @@ func _on_slot_clicked(_slot_index : int, mouse_button : int, _backpack : Node) -
 		var item_path : String = Global.item_table[item_name]
 
 		var item : BaseItem = load(item_path)
-		if slot_panel_container_9.slot.count >= 1:
-			slot_panel_container_9.slot.count += 1
-			slot_panel_container_9.set_slot_panel(slot_panel_container_9.slot)
+		var slot : BaseSlot = BaseSlot.new()
+		slot.count = 1
+		slot.item = item
+		slot_panel_container_9.slot = slot
+		craft_item_max_value()
+	else :
+		var slot : BaseSlot = BaseSlot.new()
+		slot_panel_container_9.slot = slot
+
+func _on_craft_button_pressed() -> void:
+	if slot_panel_container_9.slot.has_item():
+		for i : SlotPanelContainer in get_children():
+			if i.slot.count > 0:
+				i.slot.count -= craft_item_count
+				i.set_slot_panel()
+
+		if slot_panel_container_10.slot.has_item():
+			slot_panel_container_10.slot.count += craft_item_count
+			slot_panel_container_10.set_slot_panel()
 		else :
-			var slot : BaseSlot = BaseSlot.new()
-			slot.count = 1
-			slot.item = item
-			slot_panel_container_9.slot = slot
+			slot_panel_container_10.slot = slot_panel_container_9.slot.duplicate()
+			slot_panel_container_10.slot.count = craft_item_count
+			slot_panel_container_10.set_slot_panel()
 
+func _on_craft_item_count_spin_value_changed(value: float) -> void:
+	craft_item_count = value
 
-func _on_take_slot(_slot_index : int, mouse_button : int, _backpack : Node) -> void:
-	if mouse_button == 0:
-		if slot_panel_container_9.slot.has_item():
-			for i : SlotPanelContainer in get_children():
-				if i.slot.count > 0:
-					i.slot.count -= 1
-					i.set_slot_panel(i.slot)
+func _on_min_count_button_pressed() -> void:
+	craft_item_count_spin.value = 1
+
+func _on_max_count_button_pressed() -> void:
+	craft_item_count_spin.value = craft_item_count_spin.max_value
 #endregion
 
 # TODO 合成台UI ===============>工具方法<===============
 #region 工具方法
-
+func craft_item_max_value() -> void:
+	var min_number : int = 0
+	for i : SlotPanelContainer in get_children():
+		if i.slot.count > 0:
+			if i.slot.count < min_number and min_number != 0:
+				min_number = i.slot.count
+			else :
+				min_number = i.slot.count
+	craft_item_count_spin.max_value = min_number
 #endregion

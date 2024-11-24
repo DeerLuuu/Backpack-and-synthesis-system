@@ -68,7 +68,7 @@ func reset_slot_panel() -> void:
 	count_label.hide()
 	count_label.text = ""
 
-func set_slot_panel(_slot : BaseSlot) -> void:
+func set_slot_panel(_slot : BaseSlot = slot) -> void:
 	if _slot.item:
 		if _slot.item.item_texture:
 			slot_texture.texture = _slot.item.item_texture
