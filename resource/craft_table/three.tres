@@ -13,6 +13,10 @@ craft_table_dic = {
 }
 }
 item_table_dic = {
-"长木棍": "res://resource/items/long_board_stick.tres"
+"长木棍": {
+"制作时间": 0.5,
+"数量": 4,
+"资源路径": "res://resource/items/long_board_stick.tres"
+}
 }
 desc = "三乘三的配方表"

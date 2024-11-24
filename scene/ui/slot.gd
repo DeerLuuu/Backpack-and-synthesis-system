@@ -67,11 +67,13 @@ func reset_slot_panel() -> void:
 	slot_texture.texture = null
 	count_label.hide()
 	count_label.text = ""
+	slot.count = 0
 
 func set_slot_panel(_slot : BaseSlot = slot) -> void:
-	if _slot.item:
+	if _slot.has_item():
 		if _slot.item.item_texture:
 			slot_texture.texture = _slot.item.item_texture
+			tooltip_text = "名字：%s\n介绍：%s" % [_slot.item.item_name, _slot.item.item_desc]
 
 	if _slot.count > 1:
 		count_label.show()
