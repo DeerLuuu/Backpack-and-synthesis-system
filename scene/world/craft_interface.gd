@@ -22,8 +22,10 @@ var current_craft_table : Dictionary
 @onready var slot_panel_container_10: SlotPanelContainer = %SlotPanelContainer10
 @onready var craft_button: Button = %CraftButton
 @onready var craft_item_count_spin: SpinBox = %CraftItemCountSpin
+@onready var craft_progress_bar: ProgressBar = %CraftProgressBar
+@onready var craft_timer: Timer = $"../../../CraftTimer"
 
-var craft_item_count : int = 0
+var craft_item_count : int = 1
 #endregion
 
 # TODO 合成台UI ===============>虚方法<===============
@@ -45,7 +47,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	pass
+	craft_progress_bar.value = craft_timer.time_left
 
 func _physics_process(_delta: float) -> void:
 	pass
@@ -91,21 +93,31 @@ func _on_slot_clicked(_slot_index : int, mouse_button : int, _backpack : Node) -
 
 func _on_craft_button_pressed() -> void:
 	if slot_panel_container_9.slot.has_item():
-		for i : SlotPanelContainer in get_children():
-			if i.slot.count > 0:
-				i.slot.count -= craft_item_count
-				i.set_slot_panel()
+		for count in craft_item_count:
+			for i : SlotPanelContainer in get_children():
+				if i.slot.count > 0:
+					i.slot.count -= 1
+					i.set_slot_panel()
 
-		if slot_panel_container_10.slot.has_item():
-			slot_panel_container_10.slot.count += craft_item_count
-			slot_panel_container_10.set_slot_panel()
-		else :
-			slot_panel_container_10.slot = slot_panel_container_9.slot.duplicate()
-			slot_panel_container_10.slot.count = craft_item_count
-			slot_panel_container_10.set_slot_panel()
+			if slot_panel_container_10.slot.has_item():
+				slot_panel_container_10.slot.count += 1
+				slot_panel_container_10.set_slot_panel()
+			else :
+				slot_panel_container_10.slot = slot_panel_container_9.slot.duplicate()
+				slot_panel_container_10.slot.count = 1
+				slot_panel_container_10.set_slot_panel()
+
+			craft_timer.start(.1)
+			craft_progress_bar.max_value = .1
+			await craft_timer.timeout
+		craft_timer.stop()
+	craft_item_max_value()
 
 func _on_craft_item_count_spin_value_changed(value: float) -> void:
-	craft_item_count = value
+	if value > craft_item_count_spin.max_value:
+		craft_item_count = craft_item_count_spin.max_value
+	else :
+		craft_item_count = value
 
 func _on_min_count_button_pressed() -> void:
 	craft_item_count_spin.value = 1
