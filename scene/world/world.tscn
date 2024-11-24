@@ -97,6 +97,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="CraftTimer" type="Timer" parent="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
+unique_name_in_owner = true
 wait_time = 0.1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG"]

@@ -17,8 +17,11 @@ class_name BaseBackpack extends Resource
 
 # TODO 背包基类 ===============>变 量<===============
 #region 变量
+# 背包名字
 @export var backpack_name : String
+# 背包介绍
 @export_multiline var backpack_desc : String
+# 背包中的格子数组
 @export var slots : Array[BaseSlot]
 #endregion
 
