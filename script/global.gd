@@ -74,7 +74,7 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 				return
 
 		if dragged_slot.count >= 1:
-			if not click_slot.has_item():
+			if not click_slot.has_item() and not click_slot.is_full():
 				click_slot = dragged_slot.add_one_item()
 
 				update_slot(dragged_slot, click_slot, slot_index, backpack)
