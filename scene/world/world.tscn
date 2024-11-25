@@ -227,11 +227,36 @@ value = 50.0
 show_percentage = false
 
 [node name="OtherBackpackPanel" type="PanelContainer" parent="UI/UIGridContainer"]
-visible = false
 custom_minimum_size = Vector2(700, 500)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/UIGridContainer/OtherBackpackPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIGridContainer/OtherBackpackPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="CreateCraftTitle" type="Label" parent="UI/UIGridContainer/OtherBackpackPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "仓库"
+label_settings = SubResource("LabelSettings_kf1tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryBG" type="PanelContainer" parent="UI/UIGridContainer/OtherBackpackPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InventoryInterface" type="GridContainer" parent="UI/UIGridContainer/OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 10
 
 [node name="CreateCraftPanel" type="PanelContainer" parent="UI/UIGridContainer"]
 custom_minimum_size = Vector2(700, 500)

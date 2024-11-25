@@ -45,6 +45,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("interact"):
 			craft_panel.visible = ! craft_panel.visible
 
+
 func _unhandled_input(_event: InputEvent) -> void:
 	pass
 #endregion
