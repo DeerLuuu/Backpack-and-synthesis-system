@@ -93,10 +93,13 @@ func _on_create_craft_button_pressed() -> void:
 	current_craft_table = {"位码" : index, "配方" : craft}
 	current_item_table = {"制作时间" : time_spin.value, "数量" : count_spin.value}
 
+	if Global.craft_table.has(slot_9.slot.item.item_name):
+		print("已经有这个配方了")
+		return
+
 	Global.craft_table[slot_9.slot.item.item_name] = {"位码" : index, "配方" : craft}
 	Global.item_table[slot_9.slot.item.item_name] = {"制作时间" : time_spin.value, "数量" : count_spin.value}
-	#print(Global.craft_table)
-	#print(Global.item_table)
+
 	var file : BaseCraftTable = load("res://resource/craft_table/three.tres") as BaseCraftTable
 	file.craft_table_dic = Global.craft_table
 	file.item_table_dic = Global.item_table
