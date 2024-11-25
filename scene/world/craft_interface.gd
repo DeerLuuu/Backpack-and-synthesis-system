@@ -181,12 +181,17 @@ func _on_max_count_button_pressed() -> void:
 # TODO_FUC 合成台：获取最大制作数量
 func craft_item_max_value() -> void:
 	var min_number : int = 64
+	var is_null : bool = true
 	for i : SlotPanelContainer in get_children():
 		if i.slot.count <= 0: continue
 
 		if i.slot.count >= min_number: continue
 
+		is_null = false
 		min_number = i.slot.count
 
-	craft_item_count_spin.max_value = min_number * craft_item_count
+	if is_null:
+		craft_item_count_spin.max_value = 0
+	else :
+		craft_item_count_spin.max_value = min_number * craft_item_count
 #endregion
