@@ -22,7 +22,7 @@ signal slot_clicked(slot_index : int, mouse_index : int, slot_parent : Node)
 	set(v):
 		slot = v
 		if slot == null: return
-		if slot.item == null or slot.item == Global.NULL: return
+		if slot.item == null: return
 		set_slot_panel(slot)
 #endregion
 

@@ -69,7 +69,7 @@ func _process(_delta: float) -> void:
 # TODO 合成台UI ===============>信号链接方法<===============
 #region 信号链接方法
 # TODO_FUC 合成台：格子容器：点击信号
-func _on_slot_clicked(_slot_index : int, mouse_button : int, _backpack : Node) -> void:
+func _on_slot_clicked(_slot_index : int, _mouse_button : int, _backpack : Node) -> void:
 	# 物品位码数组
 	var index : Array[int]
 	# 物品配方数组
@@ -103,7 +103,7 @@ func _on_slot_clicked(_slot_index : int, mouse_button : int, _backpack : Node) -
 	# 物品名称、物品数组、物品路径、物品资源、格子资源的变量
 	var item_name : String = Global.craft_table.find_key(current_craft_table)
 	var item_dic : Dictionary = Global.item_table[item_name]
-	var item_path : String = item_dic["资源路径"]
+	var item_path : String = Global.items[item_name]
 	var item : BaseItem = load(item_path)
 	var slot : BaseSlot = BaseSlot.new()
 

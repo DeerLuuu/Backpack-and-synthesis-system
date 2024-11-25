@@ -23,6 +23,10 @@ craft_table_dic = {
 "位码": [1, 1, -1],
 "配方": ["铁锭", "短木棍", "线"]
 },
+"铁铲": {
+"位码": Array[int]([1, 1, -1]),
+"配方": Array[String](["铁锭", "短木棍", "短木棍"])
+},
 "长木棍": {
 "位码": [-1],
 "配方": ["木板"]
@@ -31,28 +35,27 @@ craft_table_dic = {
 item_table_dic = {
 "木弓": {
 "制作时间": 2.0,
-"数量": 1,
-"资源路径": "res://resource/items/board_archer.tres"
+"数量": 1
 },
 "木板": {
 "制作时间": 0.7,
-"数量": 4,
-"资源路径": "res://resource/items/board.tres"
+"数量": 4
 },
 "短木棍": {
 "制作时间": 0.2,
-"数量": 2,
-"资源路径": "res://resource/items/short_board_stick.tres"
+"数量": 2
 },
 "铁箭": {
 "制作时间": 0.4,
-"数量": 1,
-"资源路径": "res://resource/items/iron_arrow.tres"
+"数量": 1
+},
+"铁铲": {
+"制作时间": 1.5,
+"数量": 1.0
 },
 "长木棍": {
 "制作时间": 0.5,
-"数量": 4,
-"资源路径": "res://resource/items/long_board_stick.tres"
+"数量": 4
 }
 }
 desc = "三乘三的配方表"

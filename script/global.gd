@@ -13,15 +13,7 @@ extends Node
 # TODO 全局属性 ===============>常 量<===============
 #region 常量
 # 物品 /// /// /// /// /// ///
-const BOARD = preload("res://resource/items/board.tres")
-const BOARD_ARCHER = preload("res://resource/items/board_archer.tres")
-const IRON = preload("res://resource/items/iron.tres")
-const IRON_ARROW = preload("res://resource/items/iron_arrow.tres")
-const LINE = preload("res://resource/items/line.tres")
-const LONG_BOARD_STICK = preload("res://resource/items/long_board_stick.tres")
-const NULL = preload("res://resource/items/null.tres")
-const SHORT_BOARD_STICK = preload("res://resource/items/short_board_stick.tres")
-const WOOD = preload("res://resource/items/wood.tres")
+
 # /// /// /// /// /// /// ///
 
 # UI /// /// /// /// /// ///
@@ -35,6 +27,18 @@ const THREE = preload("res://resource/craft_table/three.tres")
 
 # TODO 全局属性 ===============>变 量<===============
 #region 变量
+var items : Dictionary = {
+	"木板" : "res://resource/items/board.tres",
+	"木弓" : "res://resource/items/board_archer.tres",
+	"铁锭" : "res://resource/items/iron.tres",
+	"铁箭" : "res://resource/items/iron_arrow.tres",
+	"线" : "res://resource/items/line.tres",
+	"长木棍" : "res://resource/items/long_board_stick.tres",
+	"空" : "res://resource/items/null.tres",
+	"短木棍" : "res://resource/items/short_board_stick.tres",
+	"木头" : "res://resource/items/wood.tres",
+	"铁铲" : "res://resource/items/iron_shovel.tres"
+}
 # 玩家背包
 var player_backpack = preload("res://resource/player_backpack.tres")
 # 玩家鼠标格子容器
