@@ -132,6 +132,9 @@ func _on_craft_button_pressed() -> void:
 		# 如果当前物品满了跳过
 		if slot_panel_container_10.slot.is_full(): break
 
+		if slot_panel_container_10.slot.has_item():
+			if not slot_panel_container_10.slot.item.can_stack: break
+
 		# 物品制作时间开始
 		craft_timer.start(craft_item_time)
 		# 物品制作进度条初始化

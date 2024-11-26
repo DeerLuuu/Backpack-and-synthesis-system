@@ -455,10 +455,13 @@ theme_override_font_sizes/font_size = 24
 text = "新建
 合成"
 
-[node name="DraggedSlotPanelContainer" parent="UI" instance=ExtResource("2_1ka24")]
+[node name="DraggedSlotPanelContainer" parent="UI/UIGridContainer" instance=ExtResource("2_1ka24")]
 unique_name_in_owner = true
 visible = false
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 slot = SubResource("Resource_t2qji")
 
 [connection signal="visibility_changed" from="UI/UIGridContainer/PlayerBackpackPanel" to="UI/UIGridContainer" method="_on_player_backpack_panel_visibility_changed"]
