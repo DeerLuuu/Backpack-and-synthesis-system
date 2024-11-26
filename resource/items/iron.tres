@@ -12,4 +12,5 @@ script = ExtResource("1_7suik")
 item_name = "铁锭"
 item_desc = "由铁矿炼制成的材料"
 can_stack = true
+can_dismantle = false
 item_texture = SubResource("AtlasTexture_fldqg")

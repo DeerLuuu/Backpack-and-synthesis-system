@@ -12,4 +12,5 @@ script = ExtResource("1_8vtdl")
 item_name = "木头"
 item_desc = "一个普普通通的木头"
 can_stack = true
+can_dismantle = false
 item_texture = SubResource("AtlasTexture_voit4")

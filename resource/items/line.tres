@@ -12,4 +12,5 @@ script = ExtResource("1_hsqh3")
 item_name = "线"
 item_desc = "线"
 can_stack = true
+can_dismantle = false
 item_texture = SubResource("AtlasTexture_pax3i")

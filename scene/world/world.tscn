@@ -67,6 +67,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PlayerBackInterface" type="GridContainer" parent="UI/UIGridContainer/PlayerBackpackPanel/MarginContainer/VBoxContainer/PlayerBackBG"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -461,6 +462,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0)
 slot = SubResource("Resource_t2qji")
 
+[connection signal="visibility_changed" from="UI/UIGridContainer/PlayerBackpackPanel" to="UI/UIGridContainer" method="_on_player_backpack_panel_visibility_changed"]
 [connection signal="pressed" from="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/HBoxContainer/MinCountButton" to="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_min_count_button_pressed"]
 [connection signal="value_changed" from="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/HBoxContainer/CraftItemCountSpin" to="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_craft_item_count_spin_value_changed"]
 [connection signal="pressed" from="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/HBoxContainer/MaxCountButton" to="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_max_count_button_pressed"]

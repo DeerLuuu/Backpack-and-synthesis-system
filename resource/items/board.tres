@@ -12,4 +12,5 @@ script = ExtResource("1_q75nf")
 item_name = "木板"
 item_desc = "由木头切割而成的材料"
 can_stack = true
+can_dismantle = false
 item_texture = SubResource("AtlasTexture_w4oba")

@@ -12,4 +12,5 @@ script = ExtResource("2_3urlr")
 item_name = "长木棍"
 item_desc = "由木板切割打磨而成的材料"
 can_stack = true
+can_dismantle = false
 item_texture = SubResource("AtlasTexture_lcl2r")

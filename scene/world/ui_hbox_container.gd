@@ -19,6 +19,8 @@ class_name UIGridContainer extends GridContainer
 #region 变量
 # 玩家背包面板
 @onready var player_backpack_panel: PanelContainer = %PlayerBackpackPanel
+# 玩家背包Grid容器
+@onready var player_back_interface: PlayerBackInterface = %PlayerBackInterface
 # 合成面板
 @onready var craft_panel: PanelContainer = %CraftPanel
 #endregion
@@ -44,6 +46,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_action_pressed("interact"):
 			craft_panel.visible = ! craft_panel.visible
+		if event.is_action_pressed("inventory"):
+			player_backpack_panel.visible = ! player_backpack_panel.visible
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -52,7 +56,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 # TODO 库存、合成系统的容器UI ===============>信号链接方法<===============
 #region 信号链接方法
-
+func _on_player_backpack_panel_visibility_changed() -> void:
+	if not player_backpack_panel: return
+	if player_backpack_panel.visible: return
+	Global.update_backpack(player_back_interface)
 #endregion
 
 # TODO 库存、合成系统的容器UI ===============>工具方法<===============

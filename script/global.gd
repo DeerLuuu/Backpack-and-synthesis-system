@@ -104,4 +104,10 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 func update_slot(dragged_slot : BaseSlot, click_slot : BaseSlot, slot_index : int, backpack : Node) -> void:
 	dragged_slot_panel_container.slot = dragged_slot
 	backpack.get_child(slot_index).slot = click_slot
+
+func update_backpack(backpack_grid : GridContainer) -> void:
+	for i in backpack_grid.get_child_count():
+		player_backpack.slots[i] = backpack_grid.get_child(i).slot
+
+	ResourceSaver.save(player_backpack, "res://resource/player_backpack.tres")
 #endregion
