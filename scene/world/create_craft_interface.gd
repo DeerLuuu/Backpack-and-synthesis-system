@@ -72,10 +72,6 @@ func _on_create_craft_button_pressed() -> void:
 	var craft : Array[String]
 	# 单个位码的临时存储变量
 	var number : int = 0
-	# 当前合成台上的物品组成的合成表
-	var current_craft_table : Dictionary
-	# 当前合成的物品数据
-	var current_item_table : Dictionary
 
 	# 判断并生成合成台中格子物品对应的配方表
 	for i : SlotPanelContainer in get_children():
@@ -89,9 +85,6 @@ func _on_create_craft_button_pressed() -> void:
 
 	# 去掉第一个位码，在结尾添加-1位码
 	index.pop_front()
-	index.append(-1)
-	current_craft_table = {"位码" : index, "配方" : craft}
-	current_item_table = {"制作时间" : time_spin.value, "数量" : count_spin.value}
 
 	if Global.craft_table.has(slot_9.slot.item.item_name):
 		print("已经有这个配方了")

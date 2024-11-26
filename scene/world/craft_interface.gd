@@ -9,7 +9,7 @@ class_name CraftInterface extends GridContainer
 #region 信号
 # WARNING 还没用
 # 制作的物品满了时发出的信号
-signal final_slot_panel_is_full(slot : BaseSlot)
+#signal final_slot_panel_is_full(slot : BaseSlot)
 #endregion
 
 # TODO 合成台UI ===============>常 量<===============
@@ -31,6 +31,10 @@ signal final_slot_panel_is_full(slot : BaseSlot)
 @onready var craft_progress_bar: ProgressBar = %CraftProgressBar
 # 物品制作计时器
 @onready var craft_timer: Timer = %CraftTimer
+# 拆解台UI
+@onready var dismantle_h_box_container: HBoxContainer = %DismantleHBoxContainer
+# 合成台UI
+@onready var craft_h_box_container: HBoxContainer = %CraftHBoxContainer
 
 # 最大物品数量
 var max_craft_item_count : int = 1
@@ -160,9 +164,9 @@ func _on_craft_button_pressed() -> void:
 	craft_item_max_value()
 
 # TODO_FUC 合成台：制作数量输入框：指更新信号方法
-func _on_craft_item_count_spin_value_changed(value: float) -> void:
+func _on_craft_item_count_spin_value_changed(value: int) -> void:
 	if value > craft_item_count_spin.max_value:
-		max_craft_item_count = craft_item_count_spin.max_value
+		max_craft_item_count = int(craft_item_count_spin.max_value)
 		return
 	max_craft_item_count = value
 
@@ -173,6 +177,11 @@ func _on_min_count_button_pressed() -> void:
 # TODO_FUC 合成台：最大制作数量按钮：pressed 信号方法
 func _on_max_count_button_pressed() -> void:
 	craft_item_count_spin.value = craft_item_count_spin.max_value
+
+func _on_switch_craft_button_pressed() -> void:
+	craft_h_box_container.show()
+	dismantle_h_box_container.hide()
+
 #endregion
 
 # TODO 合成台UI ===============>工具方法<===============

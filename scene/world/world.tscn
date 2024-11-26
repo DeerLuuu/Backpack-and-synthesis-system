@@ -269,6 +269,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="SwitchCraftButton" type="Button" parent="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "合成台"
+
 [node name="Label" type="Label" parent="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "进度"
@@ -281,9 +287,15 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 30)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 4
 value = 50.0
 show_percentage = false
+
+[node name="SwitchDismantleButton" type="Button" parent="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "拆解台"
 
 [node name="OtherBackpackPanel" type="PanelContainer" parent="UI/UIGridContainer"]
 custom_minimum_size = Vector2(700, 500)
@@ -454,4 +466,6 @@ slot = SubResource("Resource_t2qji")
 [connection signal="pressed" from="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/HBoxContainer/MaxCountButton" to="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_max_count_button_pressed"]
 [connection signal="pressed" from="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer2/CraftButton" to="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_craft_button_pressed"]
 [connection signal="pressed" from="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer2/DismantleButton" to="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" method="_on_dismantle_button_pressed"]
+[connection signal="pressed" from="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/HBoxContainer/SwitchCraftButton" to="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_switch_craft_button_pressed"]
+[connection signal="pressed" from="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/HBoxContainer/SwitchDismantleButton" to="UI/UIGridContainer/CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" method="_on_switch_dismantle_button_pressed"]
 [connection signal="pressed" from="UI/UIGridContainer/CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/HBoxContainer/CreateCraftButton" to="UI/UIGridContainer/CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" method="_on_create_craft_button_pressed"]
