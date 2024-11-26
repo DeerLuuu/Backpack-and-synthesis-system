@@ -68,6 +68,7 @@ func reset_slot_panel() -> void:
 	count_label.hide()
 	count_label.text = ""
 	slot.count = 0
+	tooltip_text = ""
 
 # 设置格子
 func set_slot_panel(_slot : BaseSlot = slot) -> void:

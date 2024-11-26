@@ -13,6 +13,8 @@ class_name BaseItem extends Resource
 @export_multiline var item_desc : String
 # 物品是否可以堆叠
 @export var can_stack : bool
+# 物品是可以拆解
+@export var can_dismantle : bool
 # 物品纹理
 @export var item_texture : Texture2D
 #endregion

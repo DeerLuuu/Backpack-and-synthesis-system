@@ -12,4 +12,5 @@ script = ExtResource("2_1d6mj")
 item_name = "木弓"
 item_desc = "一把使用木头制作的弓"
 can_stack = false
+can_dismantle = true
 item_texture = SubResource("AtlasTexture_wwo27")

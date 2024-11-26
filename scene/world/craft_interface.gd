@@ -20,9 +20,9 @@ signal final_slot_panel_is_full(slot : BaseSlot)
 # TODO 合成台UI ===============>变 量<===============
 #region 变量
 # 当前制作的物品的格子容器
-@onready var slot_panel_container_9: SlotPanelContainer = %SlotPanelContainer9
+@onready var slot_panel_container_9: SlotPanelContainer = $"../../VBoxContainer2/SlotPanelContainer9"
 # 制作完的物品的格子容器
-@onready var slot_panel_container_10: SlotPanelContainer = %SlotPanelContainer10
+@onready var slot_panel_container_10: SlotPanelContainer = $"../../VBoxContainer2/SlotPanelContainer10"
 # 制作按钮
 @onready var craft_button: Button = %CraftButton
 # 物品制作数量输入框
@@ -53,7 +53,6 @@ func _ready() -> void:
 		i.slot_clicked.connect(Global._on_slot_clicked)
 		i.slot_clicked.connect(_on_slot_clicked)
 
-	slot_panel_container_9.slot_clicked.connect(Global._on_slot_clicked)
 	slot_panel_container_10.slot_clicked.connect(Global._on_slot_clicked)
 	slot_panel_container_10.slot_clicked.connect(_on_slot_clicked)
 

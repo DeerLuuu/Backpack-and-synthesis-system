@@ -15,4 +15,5 @@ script = ExtResource("2_vce25")
 item_name = "铁箭"
 item_desc = "使用铁箭头打造的箭矢"
 can_stack = true
+can_dismantle = true
 item_texture = SubResource("AtlasTexture_wex86")
