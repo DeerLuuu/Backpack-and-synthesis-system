@@ -43,11 +43,21 @@ var items : Dictionary = {
 var player_backpack = preload("res://resource/player_backpack.tres")
 # 玩家鼠标格子容器
 var dragged_slot_panel_container: SlotPanelContainer
+# 玩家背包格子容器
+var player_backpack_grid: PlayerBackInterface
 # 合成字典
 var craft_table : Dictionary
 # 物品字典
 var item_table : Dictionary
+# Shift 快捷键
+var is_shift : bool = false
 #endregion
+
+func _shortcut_input(event: InputEvent) -> void:
+	if event.is_released():
+		is_shift = false
+	if event.is_pressed():
+		is_shift = event.as_text().begins_with("Shift")
 
 # TODO 全局属性 ===============>信号链接方法<===============
 #region 信号链接方法
@@ -91,7 +101,14 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 				return
 
 	if mouse_button == 2:
-		print("特殊点击")
+		if not click_slot.has_item(): return
+		if backpack is PlayerBackInterface: return
+
+		add_item(click_slot.duplicate(), player_backpack_grid)
+		click_slot.count = 0
+
+		# 更新格子容器数据
+		update_slot(dragged_slot, click_slot, slot_index, backpack)
 		return
 
 	var temp_slot : BaseSlot = dragged_slot
@@ -108,6 +125,21 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 func update_slot(dragged_slot : BaseSlot, click_slot : BaseSlot, slot_index : int, backpack : Node) -> void:
 	dragged_slot_panel_container.slot = dragged_slot
 	backpack.get_child(slot_index).slot = click_slot
+
+func add_item(slot : BaseSlot, backpack_grid : GridContainer) -> void:
+	for i : SlotPanelContainer in backpack_grid.get_children():
+		if not i.slot.has_item():
+			i.slot = slot
+			i.set_slot_panel()
+			break
+
+		if i.slot.item != slot.item: continue
+
+		i.slot = slot.stack_item(i.slot)
+		i.set_slot_panel()
+
+		if slot.count == 0:
+			break
 
 func update_backpack(backpack_grid : GridContainer) -> void:
 	for i in backpack_grid.get_child_count():

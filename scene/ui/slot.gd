@@ -54,7 +54,10 @@ func _gui_input(event: InputEvent) -> void:
 	# 检测鼠标左键、右键交互并发出信号
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("mouse_left"):
-			slot_clicked.emit(get_index(), Mouse.MOUSE_LEFT, get_parent())
+			if Global.is_shift:
+				slot_clicked.emit(get_index(), Mouse.MOUSE_LEFT_PLUS, get_parent())
+			else :
+				slot_clicked.emit(get_index(), Mouse.MOUSE_LEFT, get_parent())
 		elif event.is_action_pressed("mouse_right"):
 			slot_clicked.emit(get_index(), Mouse.MOUSE_RIGHT, get_parent())
 #endregion

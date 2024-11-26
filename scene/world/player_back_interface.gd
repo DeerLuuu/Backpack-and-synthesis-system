@@ -38,6 +38,7 @@ func _ready() -> void:
 
 	# 将全局鼠标格子容器指定为当前场景的鼠标格子容器
 	Global.dragged_slot_panel_container = dragged_slot_panel_container
+	Global.player_backpack_grid = self
 
 func _process(_delta: float) -> void:
 	# 鼠标格子容器是否显示，以及鼠标格子容器跟随玩家鼠标
