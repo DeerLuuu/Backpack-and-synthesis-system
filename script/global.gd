@@ -88,13 +88,13 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 				return
 
 		if dragged_slot.count >= 1:
-			if not click_slot.has_item() and not click_slot.is_full():
+			if not click_slot.has_item():
 				click_slot = dragged_slot.add_one_item()
 
 				update_slot(dragged_slot, click_slot, slot_index, backpack)
 				return
 
-			if click_slot.can_stack(dragged_slot):
+			if click_slot.can_stack(dragged_slot) and not click_slot.is_full():
 				click_slot = dragged_slot.stack_one_item(click_slot)
 
 				update_slot(dragged_slot, click_slot, slot_index, backpack)
@@ -131,6 +131,8 @@ func add_item(slot : BaseSlot, backpack_grid : GridContainer) -> void:
 		if not i.slot.has_item(): continue
 
 		if i.slot.item != slot.item: continue
+
+		if not slot.item.can_stack: continue
 
 		i.slot = slot.stack_item(i.slot)
 		i.set_slot_panel()
