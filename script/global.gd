@@ -128,18 +128,21 @@ func update_slot(dragged_slot : BaseSlot, click_slot : BaseSlot, slot_index : in
 
 func add_item(slot : BaseSlot, backpack_grid : GridContainer) -> void:
 	for i : SlotPanelContainer in backpack_grid.get_children():
-		if not i.slot.has_item():
-			i.slot = slot
-			i.set_slot_panel()
-			break
+		if not i.slot.has_item(): continue
 
 		if i.slot.item != slot.item: continue
 
 		i.slot = slot.stack_item(i.slot)
 		i.set_slot_panel()
 
-		if slot.count == 0:
-			break
+	for i : SlotPanelContainer in backpack_grid.get_children():
+		if slot.count == 0: break
+
+		if i.slot.has_item(): continue
+
+		i.slot = slot
+		i.set_slot_panel()
+		break
 
 func update_backpack(backpack_grid : GridContainer) -> void:
 	for i in backpack_grid.get_child_count():

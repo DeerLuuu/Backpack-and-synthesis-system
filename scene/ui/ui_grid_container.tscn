@@ -1,0 +1,471 @@
+[gd_scene load_steps=12 format=3 uid="uid://ctfmsbke88o8t"]
+
+[ext_resource type="Script" path="res://scene/ui/ui_hbox_container.gd" id="1_5lri2"]
+[ext_resource type="Script" path="res://scene/ui/player_back_interface.gd" id="2_vx2lq"]
+[ext_resource type="Script" path="res://scene/ui/craft_interface.gd" id="3_8hxql"]
+[ext_resource type="PackedScene" uid="uid://bw1gfo3lu10ho" path="res://scene/ui/slot.tscn" id="4_rucro"]
+[ext_resource type="Script" path="res://scene/ui/dismantle_interface.gd" id="5_8bkr7"]
+[ext_resource type="Script" path="res://scene/ui/create_craft_interface.gd" id="6_wjf5q"]
+[ext_resource type="Script" path="res://script/base_slot.gd" id="7_huljt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kf1tx"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_4x2n7"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_7hg2b"]
+
+[sub_resource type="Resource" id="Resource_t2qji"]
+script = ExtResource("7_huljt")
+count = 0
+
+[node name="UIGridContainer" type="GridContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+script = ExtResource("1_5lri2")
+
+[node name="PlayerBackpackPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerBackpackPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerBackpackPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerBbackpackTitle" type="Label" parent="PlayerBackpackPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "背包"
+label_settings = SubResource("LabelSettings_kf1tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerBackBG" type="PanelContainer" parent="PlayerBackpackPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerBackInterface" type="GridContainer" parent="PlayerBackpackPanel/MarginContainer/VBoxContainer/PlayerBackBG"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 10
+script = ExtResource("2_vx2lq")
+
+[node name="CraftPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="CraftPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="CraftTitle" type="Label" parent="CraftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "合成台"
+label_settings = SubResource("LabelSettings_kf1tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CraftBG" type="PanelContainer" parent="CraftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CraftTimer" type="Timer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
+unique_name_in_owner = true
+wait_time = 0.1
+
+[node name="CraftHBoxContainer" type="HBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="CraftInterface" type="GridContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 3
+script = ExtResource("3_8hxql")
+
+[node name="SlotPanelContainer0" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer1" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer2" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer3" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer4" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer5" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer6" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer7" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer8" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MinCountButton" type="Button" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "最小数量"
+
+[node name="CraftItemCountSpin" type="SpinBox" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+value = 1.0
+
+[node name="MaxCountButton" type="Button" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "最大数量"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="SlotPanelContainer9" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer2" instance=ExtResource("4_rucro")]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="CraftButton" type="Button" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "启动"
+
+[node name="SlotPanelContainer10" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer2" instance=ExtResource("4_rucro")]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="DismantleHBoxContainer" type="HBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="SlotPanelContainer9" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer2" instance=ExtResource("4_rucro")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="DismantleButton" type="Button" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "启动"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="DismantleInterface" type="GridContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 3
+script = ExtResource("5_8bkr7")
+
+[node name="SlotPanelContainer0" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer1" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer2" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer3" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer4" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer5" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer6" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer7" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="SlotPanelContainer8" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SwitchCraftButton" type="Button" parent="CraftPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "合成台"
+
+[node name="Label" type="Label" parent="CraftPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "进度"
+label_settings = SubResource("LabelSettings_4x2n7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CraftProgressBar" type="ProgressBar" parent="CraftPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+show_percentage = false
+
+[node name="SwitchDismantleButton" type="Button" parent="CraftPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "拆解台"
+
+[node name="OtherBackpackPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="OtherBackpackPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OtherBackpackPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="CreateCraftTitle" type="Label" parent="OtherBackpackPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "仓库"
+label_settings = SubResource("LabelSettings_kf1tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryBG" type="PanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InventoryInterface" type="GridContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 10
+
+[node name="CreateCraftPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CreateCraftPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateCraftPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="CreateCraftTitle" type="Label" parent="CreateCraftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "创建合成表"
+label_settings = SubResource("LabelSettings_kf1tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreateCraftBG" type="PanelContainer" parent="CreateCraftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="CreateCraftInterface" type="GridContainer" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 3
+script = ExtResource("6_wjf5q")
+
+[node name="Slot0" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="Slot1" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="Slot2" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="Slot3" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="Slot4" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="Slot5" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="Slot6" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="Slot7" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="Slot8" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" instance=ExtResource("4_rucro")]
+layout_mode = 2
+
+[node name="Slot9" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer" instance=ExtResource("4_rucro")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "制作数量"
+label_settings = SubResource("LabelSettings_7hg2b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountSpin" type="SpinBox" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 64.0
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "制作时长"
+label_settings = SubResource("LabelSettings_7hg2b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeSpin" type="SpinBox" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 64.0
+step = 0.1
+value = 0.1
+
+[node name="CreateCraftButton" type="Button" parent="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "新建
+合成"
+
+[node name="DraggedSlotPanelContainer" parent="." instance=ExtResource("4_rucro")]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+slot = SubResource("Resource_t2qji")
+
+[connection signal="visibility_changed" from="PlayerBackpackPanel" to="." method="_on_player_backpack_panel_visibility_changed"]
+[connection signal="pressed" from="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/HBoxContainer/MinCountButton" to="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_min_count_button_pressed"]
+[connection signal="value_changed" from="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/HBoxContainer/CraftItemCountSpin" to="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_craft_item_count_spin_value_changed"]
+[connection signal="pressed" from="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/HBoxContainer/MaxCountButton" to="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_max_count_button_pressed"]
+[connection signal="pressed" from="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer2/CraftButton" to="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_craft_button_pressed"]
+[connection signal="pressed" from="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer2/DismantleButton" to="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" method="_on_dismantle_button_pressed"]
+[connection signal="pressed" from="CraftPanel/MarginContainer/VBoxContainer/HBoxContainer/SwitchCraftButton" to="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer/VBoxContainer/CraftInterface" method="_on_switch_craft_button_pressed"]
+[connection signal="pressed" from="CraftPanel/MarginContainer/VBoxContainer/HBoxContainer/SwitchDismantleButton" to="CraftPanel/MarginContainer/VBoxContainer/CraftBG/DismantleHBoxContainer/VBoxContainer/DismantleInterface" method="_on_switch_dismantle_button_pressed"]
+[connection signal="pressed" from="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/HBoxContainer/CreateCraftButton" to="CreateCraftPanel/MarginContainer/VBoxContainer/CreateCraftBG/HBoxContainer/VBoxContainer/CreateCraftInterface" method="_on_create_craft_button_pressed"]
