@@ -13,6 +13,15 @@ signal slot_clicked(slot_index : int, mouse_index : int, slot_parent : Node)
 
 # TODO 格子UI ===============>常 量<===============
 #region 常量
+enum Mouse{
+	MOUSE_LEFT,
+	MOUSE_RIGHT,
+	MOUSE_LEFT_PLUS
+}
+#endregion
+
+# TODO 格子UI ===============>变 量<===============
+#region 变量
 # 格子中图片容器
 @onready var slot_texture: TextureRect = %SlotTexture
 # 格子中数量文字
@@ -24,11 +33,6 @@ signal slot_clicked(slot_index : int, mouse_index : int, slot_parent : Node)
 		if slot == null: return
 		if slot.item == null: return
 		set_slot_panel(slot)
-#endregion
-
-# TODO 格子UI ===============>变 量<===============
-#region 变量
-
 #endregion
 
 # TODO 格子UI ===============>虚方法<===============
@@ -50,9 +54,9 @@ func _gui_input(event: InputEvent) -> void:
 	# 检测鼠标左键、右键交互并发出信号
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("mouse_left"):
-			slot_clicked.emit(get_index(), 0, get_parent())
+			slot_clicked.emit(get_index(), Mouse.MOUSE_LEFT, get_parent())
 		elif event.is_action_pressed("mouse_right"):
-			slot_clicked.emit(get_index(), 1, get_parent())
+			slot_clicked.emit(get_index(), Mouse.MOUSE_RIGHT, get_parent())
 #endregion
 
 # TODO 格子UI ===============>信号链接方法<===============

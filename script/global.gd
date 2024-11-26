@@ -90,6 +90,10 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 				update_slot(dragged_slot, click_slot, slot_index, backpack)
 				return
 
+	if mouse_button == 2:
+		print("特殊点击")
+		return
+
 	var temp_slot : BaseSlot = dragged_slot
 	dragged_slot = click_slot
 	click_slot = temp_slot
