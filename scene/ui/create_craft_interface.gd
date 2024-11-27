@@ -21,7 +21,7 @@ extends GridContainer
 @onready var count_spin: SpinBox = %CountSpin
 @onready var time_spin: SpinBox = %TimeSpin
 @onready var create_craft_button: Button = %CreateCraftButton
-
+@onready var ui_grid_container: UIGridContainer = $"../../../../../../.."
 #endregion
 
 # TODO name ===============>虚方法<===============
@@ -72,6 +72,10 @@ func _on_create_craft_button_pressed() -> void:
 	var craft : Array[String]
 	# 单个位码的临时存储变量
 	var number : int = 0
+	# 覆盖合成表
+	var overwrite_craft_teable : Callable = func(selected : bool) -> void:
+		if not selected: return
+		save_carft_table(index, craft)
 
 	# 判断并生成合成台中格子物品对应的配方表
 	for i : SlotPanelContainer in get_children():
@@ -85,21 +89,25 @@ func _on_create_craft_button_pressed() -> void:
 
 	# 去掉第一个位码，在结尾添加-1位码
 	index.pop_front()
+	index.push_back(-1)
 
 	if Global.craft_table.has(slot_9.slot.item.item_name):
-		print("已经有这个配方了")
+		var warning_select_panel : WarningSelectPanel = Global.WARNING_SELECT_PANEL.instantiate()
+		ui_grid_container.get_parent().add_child(warning_select_panel)
+		warning_select_panel.warning_selected.connect(overwrite_craft_teable)
 		return
 
-	Global.craft_table[slot_9.slot.item.item_name] = {"位码" : index, "配方" : craft}
+	save_carft_table(index, craft)
+#endregion
+
+# TODO name ===============>工具方法<===============
+#region 工具方法
+func save_carft_table(indexs, crafts) -> void:
+	Global.craft_table[slot_9.slot.item.item_name] = {"位码" : indexs, "配方" : crafts}
 	Global.item_table[slot_9.slot.item.item_name] = {"制作时间" : time_spin.value, "数量" : count_spin.value}
 
 	var file : BaseCraftTable = load("res://resource/craft_table/three.tres") as BaseCraftTable
 	file.craft_table_dic = Global.craft_table
 	file.item_table_dic = Global.item_table
 	ResourceSaver.save(file, "res://resource/craft_table/three.tres")
-#endregion
-
-# TODO name ===============>工具方法<===============
-#region 工具方法
-
 #endregion

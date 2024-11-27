@@ -13,10 +13,10 @@ extends Node
 # TODO 全局属性 ===============>常 量<===============
 #region 常量
 # 物品 /// /// /// /// /// ///
-
 # /// /// /// /// /// /// ///
 
 # UI /// /// /// /// /// ///
+const WARNING_SELECT_PANEL = preload("res://scene/ui/warning_select_panel.tscn")
 const SLOT = preload("res://scene/ui/slot.tscn")
 # /// /// /// /// /// /// ///
 
