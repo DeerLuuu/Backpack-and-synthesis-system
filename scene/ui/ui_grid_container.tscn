@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctfmsbke88o8t"]
+[gd_scene load_steps=14 format=3 uid="uid://ctfmsbke88o8t"]
 
 [ext_resource type="Script" path="res://scene/ui/ui_hbox_container.gd" id="1_5lri2"]
 [ext_resource type="Script" path="res://scene/ui/player_back_interface.gd" id="2_vx2lq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scene/ui/dismantle_interface.gd" id="5_8bkr7"]
 [ext_resource type="Script" path="res://scene/ui/create_craft_interface.gd" id="6_wjf5q"]
 [ext_resource type="Script" path="res://script/base_slot.gd" id="7_huljt"]
+[ext_resource type="Script" path="res://scene/ui/equip_interface.gd" id="7_ygn62"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kf1tx"]
 font_size = 32
@@ -300,7 +301,6 @@ theme_override_font_sizes/font_size = 24
 text = "拆解台"
 
 [node name="OtherBackpackPanel" type="PanelContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(700, 500)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -315,7 +315,7 @@ layout_mode = 2
 [node name="CreateCraftTitle" type="Label" parent="OtherBackpackPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "仓库"
+text = "装备"
 label_settings = SubResource("LabelSettings_kf1tx")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -324,16 +324,61 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="InventoryInterface" type="GridContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG"]
+[node name="EquipInterface" type="VBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/h_separation = 4
-theme_override_constants/v_separation = 4
-columns = 10
+script = ExtResource("7_ygn62")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HeadSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer" instance=ExtResource("4_rucro")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LHandSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer2" instance=ExtResource("4_rucro")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UBodySlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer2" instance=ExtResource("4_rucro")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RHandSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer2" instance=ExtResource("4_rucro")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DBodySlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer3" instance=ExtResource("4_rucro")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LLegSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer4" instance=ExtResource("4_rucro")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RLegSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer4" instance=ExtResource("4_rucro")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="CreateCraftPanel" type="PanelContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(700, 500)
 layout_mode = 2
 
