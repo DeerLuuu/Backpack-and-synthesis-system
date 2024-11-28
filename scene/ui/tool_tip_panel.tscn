@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://upa5yt4foj0b"]
+
+[ext_resource type="Script" path="res://scene/ui/tool_tip_panel.gd" id="1_kqbjx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_61a2l"]
+font_size = 24
+
+[node name="ToolTipPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 200)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kqbjx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "标题"
+label_settings = SubResource("LabelSettings_61a2l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 0
+expand_mode = 1
+
+[node name="DescLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+autowrap_mode = 3

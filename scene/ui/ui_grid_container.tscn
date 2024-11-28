@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctfmsbke88o8t"]
+[gd_scene load_steps=13 format=3 uid="uid://ctfmsbke88o8t"]
 
 [ext_resource type="Script" path="res://scene/ui/ui_hbox_container.gd" id="1_5lri2"]
 [ext_resource type="Script" path="res://scene/ui/player_back_interface.gd" id="2_vx2lq"]
@@ -10,6 +10,10 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_kf1tx"]
 font_size = 32
+
+[sub_resource type="Resource" id="Resource_r3r5s"]
+script = ExtResource("7_huljt")
+count = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_4x2n7"]
 font_size = 24
@@ -103,7 +107,6 @@ wait_time = 0.1
 
 [node name="CraftHBoxContainer" type="HBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -171,6 +174,7 @@ text = "最大数量"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG/CraftHBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
@@ -193,9 +197,11 @@ text = "启动"
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 4
+slot = SubResource("Resource_r3r5s")
 
 [node name="DismantleHBoxContainer" type="HBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -294,6 +300,7 @@ theme_override_font_sizes/font_size = 24
 text = "拆解台"
 
 [node name="OtherBackpackPanel" type="PanelContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(700, 500)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -326,6 +333,7 @@ theme_override_constants/v_separation = 4
 columns = 10
 
 [node name="CreateCraftPanel" type="PanelContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(700, 500)
 layout_mode = 2
 

@@ -32,7 +32,7 @@ enum Mouse{
 		slot = v
 		if slot == null: return
 		if slot.item == null: return
-		set_slot_panel(slot)
+		set_slot_panel()
 #endregion
 
 # TODO 格子UI ===============>虚方法<===============
@@ -49,6 +49,11 @@ func _input(_event: InputEvent) -> void:
 
 func _unhandled_input(_event: InputEvent) -> void:
 	pass
+
+func _make_custom_tooltip(for_text: String) -> Object:
+	var tool_tip_panel : ToolTipPanel = Global.TOOL_TIP_PANEL.instantiate()
+	tool_tip_panel.set_tool_tip(slot.item.item_name, slot.item.item_desc, slot.item.item_texture)
+	return tool_tip_panel
 
 func _gui_input(event: InputEvent) -> void:
 	# 检测鼠标左键、右键交互并发出信号

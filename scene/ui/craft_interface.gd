@@ -38,7 +38,7 @@ class_name CraftInterface extends GridContainer
 
 # 最大物品数量
 var max_craft_item_count : int = 1
-# 配方单词制作多少个物品
+# 配方单次制作多少个物品
 var craft_item_count : int = 1:
 	set(v):
 		craft_item_count = v
@@ -74,9 +74,9 @@ func _process(_delta: float) -> void:
 # TODO_FUC 合成台：格子容器：点击信号
 func _on_slot_clicked(_slot_index : int, _mouse_button : int, _backpack : Node) -> void:
 	# 物品位码数组
-	var index : Array[int]
+	var indexs : Array[int]
 	# 物品配方数组
-	var craft : Array[String]
+	var crafts : Array[String]
 	# 单个位码的临时存储变量
 	var number : int = 0
 	# 当前合成台上的物品组成的合成表
@@ -87,15 +87,15 @@ func _on_slot_clicked(_slot_index : int, _mouse_button : int, _backpack : Node) 
 		if i.slot.item == null:
 			number += 1
 			continue
-		craft.append(i.slot.item.item_name)
-		if not craft.is_empty():
-			index.append(number)
+		crafts.append(i.slot.item.item_name)
+		if not crafts.is_empty():
+			indexs.append(number)
 			number = 0
 
 	# 去掉第一个位码，在结尾添加-1位码
-	index.pop_front()
-	index.append(-1)
-	current_craft_table = {"位码" : index, "配方" : craft}
+	indexs.pop_front()
+	indexs.append(-1)
+	current_craft_table = {"位码" : indexs, "配方" : crafts}
 
 	# 初始化配方物品格子
 	slot_panel_container_9.slot.item = null
@@ -129,11 +129,12 @@ func _on_craft_button_pressed() -> void:
 
 	# 制作多少次
 	for count in max_craft_item_count / craft_item_count:
-		# 如果当前物品满了跳过
-		if slot_panel_container_10.slot.is_full(): break
 
 		if slot_panel_container_10.slot.has_item():
+			# 如果当前物品满了跳过
+			if slot_panel_container_10.slot.is_full(): break
 			if not slot_panel_container_10.slot.item.can_stack: break
+			if not slot_panel_container_10.slot.can_stack(slot_panel_container_9.slot): break
 
 		# 物品制作时间开始
 		craft_timer.start(craft_item_time)

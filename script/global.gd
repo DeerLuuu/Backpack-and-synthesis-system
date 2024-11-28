@@ -18,6 +18,7 @@ extends Node
 # UI /// /// /// /// /// ///
 const WARNING_SELECT_PANEL = preload("res://scene/ui/warning_select_panel.tscn")
 const SLOT = preload("res://scene/ui/slot.tscn")
+const TOOL_TIP_PANEL = preload("res://scene/ui/tool_tip_panel.tscn")
 # /// /// /// /// /// /// ///
 
 # 配方 /// /// /// /// /// ///
