@@ -34,6 +34,9 @@ const MAX_COUNT : int = 64
 
 # TODO 格子基类 ===============>工具方法<===============
 #region 工具方法
+func is_equip() -> bool:
+	return item is EquipItem
+
 # TODO_FUC 格子基类：判断是否有物品
 func has_item() -> bool:
 	return item != null

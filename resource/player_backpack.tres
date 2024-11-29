@@ -46,7 +46,7 @@ count = 53
 [sub_resource type="Resource" id="Resource_of248"]
 script = ExtResource("2_vmrof")
 item = ExtResource("5_2ua25")
-count = 41
+count = 36
 
 [sub_resource type="Resource" id="Resource_t8vcf"]
 script = ExtResource("2_vmrof")

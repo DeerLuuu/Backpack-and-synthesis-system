@@ -8,7 +8,7 @@ class_name SlotPanelContainer extends PanelContainer
 # TODO 格子UI ===============>信 号<===============
 #region 信号
 # 格子被按下发出的信号
-signal slot_clicked(slot_index : int, mouse_index : int, slot_parent : Node)
+signal slot_clicked(slot_index : int, mouse_index : int, slot_parent : Node, double_click : bool)
 #endregion
 
 # TODO 格子UI ===============>常 量<===============
@@ -16,7 +16,8 @@ signal slot_clicked(slot_index : int, mouse_index : int, slot_parent : Node)
 enum Mouse{
 	MOUSE_LEFT,
 	MOUSE_RIGHT,
-	MOUSE_LEFT_PLUS
+	MOUSE_LEFT_PLUS,
+	DOUBLE_MOUSE_LEFT
 }
 #endregion
 
@@ -33,6 +34,9 @@ enum Mouse{
 		if slot == null: return
 		if slot.item == null: return
 		set_slot_panel()
+
+var is_double : bool = false
+var can_double : bool = false
 #endregion
 
 # TODO 格子UI ===============>虚方法<===============
@@ -59,8 +63,15 @@ func _gui_input(event: InputEvent) -> void:
 	# 检测鼠标左键、右键交互并发出信号
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("mouse_left"):
+			is_double = false
+			if can_double:
+				is_double = true
+			can_double = true
+			get_tree().create_timer(.25).timeout.connect(func(): can_double = false)
 			if Global.is_shift:
 				slot_clicked.emit(get_index(), Mouse.MOUSE_LEFT_PLUS, get_parent())
+			elif is_double:
+				slot_clicked.emit(get_index(), Mouse.MOUSE_LEFT, get_parent(), true)
 			else :
 				slot_clicked.emit(get_index(), Mouse.MOUSE_LEFT, get_parent())
 		elif event.is_action_pressed("mouse_right"):

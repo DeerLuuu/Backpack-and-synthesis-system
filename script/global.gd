@@ -53,6 +53,10 @@ var craft_table : Dictionary
 var item_table : Dictionary
 # Shift 快捷键
 var is_shift : bool = false
+
+# 装备栏 /// /// /// /// /// ///
+var equip_interface : HBoxContainer
+# /// /// /// /// /// /// ///
 #endregion
 
 func _shortcut_input(event: InputEvent) -> void:
@@ -64,13 +68,13 @@ func _shortcut_input(event: InputEvent) -> void:
 # TODO 全局属性 ===============>信号链接方法<===============
 #region 信号链接方法
 # TODO_FUC 全局：格子按下方法
-func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> void:
+func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node, double_click : bool = false) -> void:
 	# 被点击的格子容器
 	var click_slot : BaseSlot = backpack.get_child(slot_index).slot
 	# 鼠标格子容器
 	var dragged_slot : BaseSlot = dragged_slot_panel_container.slot
 
-	# 鼠标左键的操作
+	# 鼠标左键
 	if mouse_button == 0:
 		if dragged_slot.has_item() and dragged_slot.can_stack(click_slot) and not click_slot.is_full():
 			click_slot = dragged_slot.stack_item(click_slot)
@@ -78,7 +82,7 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 			update_slot(dragged_slot, click_slot, slot_index, backpack)
 			return
 
-	# 鼠标右键的操作
+	# 鼠标右键
 	if mouse_button == 1:
 		if not dragged_slot.has_item():
 			if not click_slot.has_item(): return
@@ -102,9 +106,16 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 				update_slot(dragged_slot, click_slot, slot_index, backpack)
 				return
 
+	# Shift + 鼠标左键
 	if mouse_button == 2:
 		if not click_slot.has_item(): return
-		if backpack is PlayerBackInterface: return
+		if backpack is PlayerBackInterface:
+			if click_slot.is_equip():
+				add_equip(click_slot.duplicate(), equip_interface, click_slot.item.equip_type)
+				click_slot.count = 0
+
+				update_slot(dragged_slot, click_slot, slot_index, backpack)
+			return
 
 		add_item(click_slot.duplicate(), player_backpack_grid)
 		click_slot.count = 0
@@ -112,6 +123,15 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 		# 更新格子容器数据
 		update_slot(dragged_slot, click_slot, slot_index, backpack)
 		return
+
+	if double_click and dragged_slot.has_item() and not dragged_slot.is_full() and dragged_slot.item.can_stack:
+		if backpack is PlayerBackInterface:
+			for i : SlotPanelContainer in backpack.get_children():
+				if not i.slot.has_item(): continue
+				if not i.slot.can_stack(dragged_slot): continue
+				var _slot : BaseSlot = i.slot.stack_item(dragged_slot)
+				i.set_slot_panel()
+			return
 
 	var temp_slot : BaseSlot = dragged_slot
 	dragged_slot = click_slot
@@ -127,6 +147,15 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node) -> 
 func update_slot(dragged_slot : BaseSlot, click_slot : BaseSlot, slot_index : int, backpack : Node) -> void:
 	dragged_slot_panel_container.slot = dragged_slot
 	backpack.get_child(slot_index).slot = click_slot
+
+func add_equip(slot : BaseSlot, equip_interface : HBoxContainer, equip_type : int) -> void:
+	var current_slot : SlotPanelContainer = equip_interface.get_child(equip_type)
+	if current_slot.slot.has_item():
+		current_slot.slot = slot
+		add_item(current_slot.slot, player_backpack_grid)
+		return
+
+	current_slot.slot = slot
 
 func add_item(slot : BaseSlot, backpack_grid : GridContainer) -> void:
 	for i in backpack_grid.get_children():

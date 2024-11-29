@@ -23,11 +23,7 @@ enum Equip{
 
 # TODO 装备UI ===============>变 量<===============
 #region 变量
-@onready var head_slot_panel_container: SlotPanelContainer = %HeadSlotPanelContainer
-@onready var hand_slot_panel_container: SlotPanelContainer = %HandSlotPanelContainer
-@onready var u_body_slot_panel_container: SlotPanelContainer = %UBodySlotPanelContainer
-@onready var d_body_slot_panel_container: SlotPanelContainer = %DBodySlotPanelContainer
-@onready var leg_slot_panel_container: SlotPanelContainer = %LegSlotPanelContainer
+
 #endregion
 
 # TODO 装备UI ===============>虚方法<===============
@@ -37,9 +33,10 @@ func _init() -> void:
 
 func _ready() -> void:
 	for i in get_children():
-		if i is SlotPanelContainer:
-			i.slot_clicked.connect(Global._on_slot_clicked)
-			i.slot_clicked.connect(_on_slot_clicked)
+		i.slot_clicked.connect(Global._on_slot_clicked)
+		i.slot_clicked.connect(_on_slot_clicked)
+
+	Global.equip_interface = self
 
 func _process(_delta: float) -> void:
 	pass
@@ -60,34 +57,33 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _on_slot_clicked(slot_index : int, _mouse_button : int, _backpack : Node) -> void:
 	if not get_child(slot_index).slot.has_item(): return
 	var slot_panel : SlotPanelContainer = get_child(slot_index)
-	var equit_index = slot_index / 2
-	match equit_index:
+	match slot_index:
 		Equip.HELMET:
-			if not item_is_equip(slot_panel, equit_index):
+			if not item_is_equip(slot_panel, slot_index):
 				Global.add_item(slot_panel.slot, Global.player_backpack_grid)
 				slot_panel.slot = BaseSlot.new()
 				return
 			print("更新玩家属性···")
 		Equip.ARMOR:
-			if not item_is_equip(slot_panel, equit_index):
+			if not item_is_equip(slot_panel, slot_index):
 				Global.add_item(slot_panel.slot, Global.player_backpack_grid)
 				slot_panel.slot = BaseSlot.new()
 				return
 			print("更新玩家属性···")
 		Equip.ARMLET:
-			if not item_is_equip(slot_panel, equit_index):
+			if not item_is_equip(slot_panel, slot_index):
 				Global.add_item(slot_panel.slot, Global.player_backpack_grid)
 				slot_panel.slot = BaseSlot.new()
 				return
 			print("更新玩家属性···")
 		Equip.TROUSERS:
-			if not item_is_equip(slot_panel, equit_index):
+			if not item_is_equip(slot_panel, slot_index):
 				Global.add_item(slot_panel.slot, Global.player_backpack_grid)
 				slot_panel.slot = BaseSlot.new()
 				return
 			print("更新玩家属性···")
 		Equip.SHOES:
-			if not item_is_equip(slot_panel, equit_index):
+			if not item_is_equip(slot_panel, slot_index):
 				Global.add_item(slot_panel.slot, Global.player_backpack_grid)
 				slot_panel.slot = BaseSlot.new()
 				return
