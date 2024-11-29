@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BaseBackpack" load_steps=24 format=3 uid="uid://btqfw2xv1i1gk"]
+[gd_resource type="Resource" script_class="BaseBackpack" load_steps=26 format=3 uid="uid://btqfw2xv1i1gk"]
 
 [ext_resource type="Script" path="res://script/base_backpack.gd" id="1_7lv7w"]
 [ext_resource type="Script" path="res://script/base_slot.gd" id="2_vmrof"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://qoubxywu2meg" path="res://resource/items/short_board_stick.tres" id="9_0tamk"]
 [ext_resource type="Resource" uid="uid://duxnur52s33nw" path="res://resource/items/wood.tres" id="10_4cuop"]
 [ext_resource type="Resource" uid="uid://cr74opiggw5rj" path="res://resource/items/iron_shovel.tres" id="11_a5ru4"]
+[ext_resource type="Resource" uid="uid://bbpgoh7jupqg8" path="res://resource/items/equit/iron_helmet.tres" id="12_allhx"]
 
 [sub_resource type="Resource" id="Resource_shbps"]
 script = ExtResource("2_vmrof")
@@ -72,8 +73,13 @@ script = ExtResource("2_vmrof")
 item = ExtResource("5_2ua25")
 count = 1
 
+[sub_resource type="Resource" id="Resource_c2af2"]
+script = ExtResource("2_vmrof")
+item = ExtResource("12_allhx")
+count = 1
+
 [resource]
 script = ExtResource("1_7lv7w")
 backpack_name = "玩家背包"
 backpack_desc = "玩家的背包"
-slots = Array[ExtResource("2_vmrof")]([SubResource("Resource_shbps"), SubResource("Resource_6wah3"), SubResource("Resource_7n666"), SubResource("Resource_1spf1"), SubResource("Resource_6a648"), SubResource("Resource_bjtki"), SubResource("Resource_of248"), SubResource("Resource_t8vcf"), SubResource("Resource_s7nx1"), SubResource("Resource_6p2j8"), SubResource("Resource_ul77y"), SubResource("Resource_dbfhi"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+slots = Array[ExtResource("2_vmrof")]([SubResource("Resource_shbps"), SubResource("Resource_6wah3"), SubResource("Resource_7n666"), SubResource("Resource_1spf1"), SubResource("Resource_6a648"), SubResource("Resource_bjtki"), SubResource("Resource_of248"), SubResource("Resource_t8vcf"), SubResource("Resource_s7nx1"), SubResource("Resource_6p2j8"), SubResource("Resource_ul77y"), SubResource("Resource_dbfhi"), SubResource("Resource_c2af2"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

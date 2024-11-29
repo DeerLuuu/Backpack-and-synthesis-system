@@ -38,7 +38,8 @@ var items : Dictionary = {
 	"空" : "res://resource/items/null.tres",
 	"短木棍" : "res://resource/items/short_board_stick.tres",
 	"木头" : "res://resource/items/wood.tres",
-	"铁铲" : "res://resource/items/iron_shovel.tres"
+	"铁铲" : "res://resource/items/iron_shovel.tres",
+	"铁头盔" : "res://resource/items/equit/iron_helmet.tres"
 }
 # 玩家背包
 var player_backpack = preload("res://resource/player_backpack.tres")
@@ -128,7 +129,7 @@ func update_slot(dragged_slot : BaseSlot, click_slot : BaseSlot, slot_index : in
 	backpack.get_child(slot_index).slot = click_slot
 
 func add_item(slot : BaseSlot, backpack_grid : GridContainer) -> void:
-	for i : SlotPanelContainer in backpack_grid.get_children():
+	for i in backpack_grid.get_children():
 		if not i.slot.has_item(): continue
 
 		if i.slot.item != slot.item: continue
@@ -138,9 +139,8 @@ func add_item(slot : BaseSlot, backpack_grid : GridContainer) -> void:
 		i.slot = slot.stack_item(i.slot)
 		i.set_slot_panel()
 
-	for i : SlotPanelContainer in backpack_grid.get_children():
+	for i in backpack_grid.get_children():
 		if slot.count == 0: break
-
 		if i.slot.has_item(): continue
 
 		i.slot = slot

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EquipItem" load_steps=4 format=3 uid="uid://bbpgoh7jupqg8"]
+
+[ext_resource type="Texture2D" uid="uid://n0d4e26ll0ty" path="res://asset/item.png" id="1_2nhpg"]
+[ext_resource type="Script" path="res://script/equip_item.gd" id="1_71qma"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6mwc"]
+atlas = ExtResource("1_2nhpg")
+region = Rect2(0, 96, 32, 32)
+
+[resource]
+script = ExtResource("1_71qma")
+equip_type = 0
+physical_reactance = 1.0
+magic_reactance = 2.0
+item_name = "铁头盔"
+item_desc = "一个由铁锭打造的头盔"
+can_stack = false
+can_dismantle = true
+item_texture = SubResource("AtlasTexture_x6mwc")
