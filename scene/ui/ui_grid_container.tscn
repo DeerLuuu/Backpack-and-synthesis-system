@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctfmsbke88o8t"]
+[gd_scene load_steps=15 format=3 uid="uid://ctfmsbke88o8t"]
 
 [ext_resource type="Script" path="res://scene/ui/ui_hbox_container.gd" id="1_5lri2"]
 [ext_resource type="Script" path="res://scene/ui/player_back_interface.gd" id="2_vx2lq"]
@@ -18,6 +18,8 @@ count = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_4x2n7"]
 font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_6n87r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7hg2b"]
 
@@ -324,59 +326,66 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="EquipInterface" type="VBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG"]
+[node name="EquipInterface" type="HBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("7_ygn62")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="HeadSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer" instance=ExtResource("4_rucro")]
+[node name="HeadSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface" instance=ExtResource("4_rucro")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
+[node name="Label" type="Label" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+text = "头盔"
+label_settings = SubResource("LabelSettings_6n87r")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LHandSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer2" instance=ExtResource("4_rucro")]
+[node name="UBodySlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface" instance=ExtResource("4_rucro")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UBodySlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer2" instance=ExtResource("4_rucro")]
+[node name="Label2" type="Label" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
+layout_mode = 2
+text = "盔甲"
+label_settings = SubResource("LabelSettings_6n87r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HandSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface" instance=ExtResource("4_rucro")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RHandSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer2" instance=ExtResource("4_rucro")]
+[node name="Label3" type="Label" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
+layout_mode = 2
+text = "护臂"
+label_settings = SubResource("LabelSettings_6n87r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DBodySlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface" instance=ExtResource("4_rucro")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
+[node name="Label4" type="Label" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+text = "裤子"
+label_settings = SubResource("LabelSettings_6n87r")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="DBodySlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer3" instance=ExtResource("4_rucro")]
+[node name="LegSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface" instance=ExtResource("4_rucro")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
+[node name="Label5" type="Label" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="LLegSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer4" instance=ExtResource("4_rucro")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="RLegSlotPanelContainer" parent="OtherBackpackPanel/MarginContainer/VBoxContainer/InventoryBG/EquipInterface/HBoxContainer4" instance=ExtResource("4_rucro")]
-unique_name_in_owner = true
-layout_mode = 2
+text = "鞋子"
+label_settings = SubResource("LabelSettings_6n87r")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CreateCraftPanel" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(700, 500)

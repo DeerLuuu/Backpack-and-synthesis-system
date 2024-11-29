@@ -149,7 +149,8 @@ func add_item(slot : BaseSlot, backpack_grid : GridContainer) -> void:
 
 func update_backpack(backpack_grid : GridContainer) -> void:
 	for i in backpack_grid.get_child_count():
-		player_backpack.slots[i] = backpack_grid.get_child(i).slot
+		if backpack_grid.get_child(i).slot.has_item():
+			player_backpack.slots[i] = backpack_grid.get_child(i).slot
 
 	ResourceSaver.save(player_backpack, "res://resource/player_backpack.tres")
 #endregion

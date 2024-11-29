@@ -52,7 +52,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _make_custom_tooltip(for_text: String) -> Object:
 	var tool_tip_panel : ToolTipPanel = Global.TOOL_TIP_PANEL.instantiate()
-	tool_tip_panel.set_tool_tip(slot.item.item_name, slot.item.item_desc, slot.item.item_texture)
+	tool_tip_panel.set_tool_tip(slot.item.item_name, for_text, slot.item.item_texture)
 	return tool_tip_panel
 
 func _gui_input(event: InputEvent) -> void:

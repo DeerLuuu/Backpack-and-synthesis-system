@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BaseBackpack" load_steps=25 format=3 uid="uid://btqfw2xv1i1gk"]
+[gd_resource type="Resource" script_class="BaseBackpack" load_steps=24 format=3 uid="uid://btqfw2xv1i1gk"]
 
 [ext_resource type="Script" path="res://script/base_backpack.gd" id="1_7lv7w"]
 [ext_resource type="Script" path="res://script/base_slot.gd" id="2_vmrof"]
@@ -69,14 +69,11 @@ count = 1
 
 [sub_resource type="Resource" id="Resource_dbfhi"]
 script = ExtResource("2_vmrof")
-count = 0
-
-[sub_resource type="Resource" id="Resource_7qkbw"]
-script = ExtResource("2_vmrof")
-count = 0
+item = ExtResource("5_2ua25")
+count = 1
 
 [resource]
 script = ExtResource("1_7lv7w")
 backpack_name = "玩家背包"
 backpack_desc = "玩家的背包"
-slots = Array[ExtResource("2_vmrof")]([SubResource("Resource_shbps"), SubResource("Resource_6wah3"), SubResource("Resource_7n666"), SubResource("Resource_1spf1"), SubResource("Resource_6a648"), SubResource("Resource_bjtki"), SubResource("Resource_of248"), SubResource("Resource_t8vcf"), SubResource("Resource_s7nx1"), SubResource("Resource_6p2j8"), SubResource("Resource_ul77y"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_dbfhi"), SubResource("Resource_7qkbw")])
+slots = Array[ExtResource("2_vmrof")]([SubResource("Resource_shbps"), SubResource("Resource_6wah3"), SubResource("Resource_7n666"), SubResource("Resource_1spf1"), SubResource("Resource_6a648"), SubResource("Resource_bjtki"), SubResource("Resource_of248"), SubResource("Resource_t8vcf"), SubResource("Resource_s7nx1"), SubResource("Resource_6p2j8"), SubResource("Resource_ul77y"), SubResource("Resource_dbfhi"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
