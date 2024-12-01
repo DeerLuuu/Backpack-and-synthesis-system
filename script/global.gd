@@ -124,14 +124,16 @@ func _on_slot_clicked(slot_index : int, mouse_button : int, backpack : Node, dou
 		update_slot(dragged_slot, click_slot, slot_index, backpack)
 		return
 
-	if double_click and dragged_slot.has_item() and not dragged_slot.is_full() and dragged_slot.item.can_stack:
-		if backpack is PlayerBackInterface:
-			for i : SlotPanelContainer in backpack.get_children():
-				if not i.slot.has_item(): continue
-				if not i.slot.can_stack(dragged_slot): continue
-				var _slot : BaseSlot = i.slot.stack_item(dragged_slot)
-				i.set_slot_panel()
-			return
+	if double_click and \
+	dragged_slot.has_item() and \
+	not dragged_slot.is_full() and \
+	dragged_slot.item.can_stack and \
+	backpack is PlayerBackInterface:
+		for i : SlotPanelContainer in backpack.get_children():
+			if not i.slot.has_item(): continue
+			if not i.slot.can_stack(dragged_slot): continue
+			var _slot : BaseSlot = i.slot.stack_item(dragged_slot)
+			i.set_slot_panel()
 
 	var temp_slot : BaseSlot = dragged_slot
 	dragged_slot = click_slot

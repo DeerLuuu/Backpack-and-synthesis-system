@@ -110,6 +110,7 @@ wait_time = 0.1
 
 [node name="CraftHBoxContainer" type="HBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -204,7 +205,6 @@ slot = SubResource("Resource_r3r5s")
 
 [node name="DismantleHBoxContainer" type="HBoxContainer" parent="CraftPanel/MarginContainer/VBoxContainer/CraftBG"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

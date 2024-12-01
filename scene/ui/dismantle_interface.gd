@@ -19,8 +19,8 @@ class_name DismantleInterface extends GridContainer
 #region 变量
 @onready var slot_panel_container_9: SlotPanelContainer = $"../../VBoxContainer2/SlotPanelContainer9"
 @onready var craft_progress_bar: ProgressBar = %CraftProgressBar
-@onready var dismantle_button: Button = $"../../VBoxContainer2/DismantleButton"
 @onready var craft_timer: Timer = %CraftTimer
+@onready var dismantle_button: Button = $"../../VBoxContainer2/DismantleButton"
 @onready var craft_h_box_container: HBoxContainer = %CraftHBoxContainer
 @onready var dismantle_h_box_container: HBoxContainer = %DismantleHBoxContainer
 
@@ -65,7 +65,7 @@ func _on_dismantle_button_pressed() -> void:
 	var dismantle_items : Dictionary = Global.craft_table[item_name]
 	var final_items : Array
 
-	# 物品制作时间开始
+	# 物品拆解时间开始
 	craft_timer.start(item_data["制作时间"] * 2)
 	# 物品制作进度条初始化
 	craft_progress_bar.max_value = item_data["制作时间"] * 2
@@ -84,6 +84,7 @@ func _on_dismantle_button_pressed() -> void:
 	craft_timer.stop()
 
 	slot_panel_container_9.slot.count -= 1
+	dismantle_button.disabled = slot_panel_container_9.slot.count == 0
 	slot_panel_container_9.set_slot_panel()
 
 	for item in final_items:
@@ -97,6 +98,7 @@ func _on_dismantle_button_pressed() -> void:
 				break
 
 			if i.slot.item.item_name != current_slot.item.item_name: continue
+			if not i.slot.item.can_stack: continue
 			i.slot.count += 1
 			i.set_slot_panel()
 			break
