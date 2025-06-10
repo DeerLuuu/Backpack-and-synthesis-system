@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BaseCraftTable" load_steps=2 format=3 uid="uid://blg57tdob5vt6"]
 
-[ext_resource type="Script" path="res://script/base_craft_table.gd" id="1_ldo75"]
+[ext_resource type="Script" uid="uid://b8t4nr12olvn" path="res://script/base_craft_table.gd" id="1_ldo75"]
 
 [resource]
 script = ExtResource("1_ldo75")
