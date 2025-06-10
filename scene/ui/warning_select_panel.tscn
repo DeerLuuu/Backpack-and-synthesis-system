@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwonevxj032y"]
 
-[ext_resource type="Script" path="res://scene/ui/warning_select_panel.gd" id="1_bbhm4"]
+[ext_resource type="Script" uid="uid://bue52vm2g8mty" path="res://scene/ui/warning_select_panel.gd" id="1_bbhm4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d6jbl"]
 font_size = 32

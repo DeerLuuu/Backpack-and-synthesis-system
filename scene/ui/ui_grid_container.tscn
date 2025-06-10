@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://ctfmsbke88o8t"]
 
-[ext_resource type="Script" path="res://scene/ui/ui_hbox_container.gd" id="1_5lri2"]
-[ext_resource type="Script" path="res://scene/ui/player_back_interface.gd" id="2_vx2lq"]
-[ext_resource type="Script" path="res://scene/ui/craft_interface.gd" id="3_8hxql"]
+[ext_resource type="Script" uid="uid://shmwyjd8ce5j" path="res://scene/ui/ui_hbox_container.gd" id="1_5lri2"]
+[ext_resource type="Script" uid="uid://cmcfrham5e47a" path="res://scene/ui/player_back_interface.gd" id="2_vx2lq"]
+[ext_resource type="Script" uid="uid://dveuidu4sv8d8" path="res://scene/ui/craft_interface.gd" id="3_8hxql"]
 [ext_resource type="PackedScene" uid="uid://bw1gfo3lu10ho" path="res://scene/ui/slot.tscn" id="4_rucro"]
-[ext_resource type="Script" path="res://scene/ui/dismantle_interface.gd" id="5_8bkr7"]
-[ext_resource type="Script" path="res://scene/ui/create_craft_interface.gd" id="6_wjf5q"]
-[ext_resource type="Script" path="res://script/base_slot.gd" id="7_huljt"]
-[ext_resource type="Script" path="res://scene/ui/equip_interface.gd" id="7_ygn62"]
+[ext_resource type="Script" uid="uid://dammoxdq2cw08" path="res://scene/ui/dismantle_interface.gd" id="5_8bkr7"]
+[ext_resource type="Script" uid="uid://w0bttxn0w5t7" path="res://scene/ui/create_craft_interface.gd" id="6_wjf5q"]
+[ext_resource type="Script" uid="uid://cn3qe4xicnqh8" path="res://script/base_slot.gd" id="7_huljt"]
+[ext_resource type="Script" uid="uid://bgf7a2fjajr2b" path="res://scene/ui/equip_interface.gd" id="7_ygn62"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kf1tx"]
 font_size = 32
